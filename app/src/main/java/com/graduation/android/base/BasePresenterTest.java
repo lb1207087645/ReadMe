@@ -3,8 +3,22 @@ package com.graduation.android.base;
 
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
+import android.support.annotation.CallSuper;
+
+import com.graduation.android.base.model.CacheMode;
+import com.graduation.android.base.network.BaseSimpleObserver;
+import com.graduation.android.base.network.Transformer;
+import com.graduation.android.base.utils.L;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+
+
+import io.reactivex.Observable;
 
 
 /**
@@ -15,7 +29,7 @@ import java.lang.ref.WeakReference;
 public class BasePresenterTest<V extends BaseViewTest> implements IPresenter<V> {
 
     private WeakReference<V> mView;//view改成弱引用
-
+    private final List<IDisposableRelease> mObserver = new ArrayList<>();
 
     @Override
     public void attachView(V mvpView) {
@@ -29,44 +43,21 @@ public class BasePresenterTest<V extends BaseViewTest> implements IPresenter<V> 
             mView.clear();
             mView = null;
         }
-
-    }
-
-    @Override
-    public void onCreate(LifecycleOwner owner) {
+        releaseObserver();
 
     }
 
 
-    @Override
-    public void onStart() {
-
-    }
-
-    @Override
-    public void onResume() {
-
-    }
-
-    @Override
-    public void onPause() {
-
-    }
-
-    @Override
-    public void onStop() {
-
-    }
-
-    @Override
-    public void onDestroy(LifecycleOwner owner) {
-
-    }
-
-
-    @Override
-    public void onLifecycleChanged(LifecycleOwner owner, Lifecycle.Event event) {
-
+    /**
+     * 退出界面前，释放所有观察者资源
+     */
+    protected void releaseObserver() {
+        Iterator<IDisposableRelease> it = mObserver.iterator();
+        while (it.hasNext()) {
+            IDisposableRelease observer = it.next();
+            observer.release();
+            it.remove();
+        }
     }
 
 
@@ -94,6 +85,51 @@ public class BasePresenterTest<V extends BaseViewTest> implements IPresenter<V> 
 
     }
 
+
+    /**
+     * 订阅，并默认进行线程转换，工作线程为io
+     *
+     * @param observable
+     * @param observer
+     */
+    protected void subscribe(Observable observable, BaseSimpleObserver observer) {
+        mObserver.add(observer);
+        observable.compose(Transformer.switchSchedulers()).subscribe(observer);
+    }
+
+    /**
+     * 接口自定义缓存失效时间
+     *
+     * @param observable
+     * @param observer
+     * @param cacheMode
+     * @param key
+     * @param time
+     * @param type
+     */
+    protected void subscribe(Observable observable, BaseSimpleObserver observer, CacheMode cacheMode, String key, long time, Type type) {
+        mObserver.add(observer);
+        observable.compose(Transformer.switchSchedulers())
+                .compose(Transformer.switchCache(cacheMode, key, time, type))
+                .subscribe(observer);
+    }
+
+    /**
+     * 使用全局缓存失效时间
+     *
+     * @param observable
+     * @param observer
+     * @param cacheMode
+     * @param key
+     * @param type
+     */
+    protected void subscribe(Observable observable, BaseSimpleObserver observer, CacheMode cacheMode, String key, Type type) {
+        mObserver.add(observer);
+        observable.compose(Transformer.switchSchedulers())
+                .compose(Transformer.switchCache(cacheMode, key, type))
+                .subscribe(observer);
+    }
+
     /**
      * 自定义异常
      */
@@ -101,6 +137,43 @@ public class BasePresenterTest<V extends BaseViewTest> implements IPresenter<V> 
         public MvpViewNotAttachedException() {
             super("请求数据前请先调用 attachView(MvpView) 方法与View建立连接");
         }
+    }
+
+    @Override
+    public void onCreate(LifecycleOwner owner) {
+        L.e("BasePresenter", "BasePresenter: onCreate");
+    }
+
+    @Override
+    public void onStart() {
+        L.e("BasePresenter", "BasePresenter: onStart");
+    }
+
+    @Override
+    public void onResume() {
+        L.e("BasePresenter", "BasePresenter: onResume");
+    }
+
+    @Override
+    public void onPause() {
+        L.e("BasePresenter", "BasePresenter: onPause");
+    }
+
+    @Override
+    public void onStop() {
+        L.e("BasePresenter", "BasePresenter: onStop");
+    }
+
+    @Override
+    @CallSuper
+    public void onDestroy(LifecycleOwner owner) {
+        L.e("BasePresenter", "BasePresenter: onDestroy");
+        releaseObserver();
+    }
+
+    @Override
+    public void onLifecycleChanged(LifecycleOwner owner, Lifecycle.Event event) {
+        L.e("BasePresenter", "BasePresenter: onLifecycleChanged event=" + event.name());
     }
 
 }

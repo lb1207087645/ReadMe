@@ -64,5 +64,9 @@
     <dimen name="common_corner_radius_large">@dimen/common_dp_20</dimen>
 
 
+    <!-- 适配尺寸 -->
+    <dimen name="common_title_bar_size">48dp</dimen>
+
+
     <dimen name="main_tab_item_txt_size">@dimen/common_sp_10</dimen>
 </resources>

@@ -1,9 +1,5 @@
-package com.graduation.android.entity;
+package com.graduation.android.base.network;
 
-/**
- * Created by lytjackson on 2017/8/11.
- * email:lytjackson@gmail.com
- */
 public class ErrorEntity {
 
     public String errType;
@@ -20,4 +16,5 @@ public class ErrorEntity {
         this.errMsg = errMsg;
         this.message = message;
     }
+
 }

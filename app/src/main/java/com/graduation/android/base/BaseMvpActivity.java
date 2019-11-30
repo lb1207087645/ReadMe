@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 
 import com.graduation.android.R;
-import com.graduation.android.entity.ErrorEntity;
+import com.graduation.android.base.network.ErrorEntity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -184,6 +184,14 @@ public abstract class BaseMvpActivity<P extends IPresenter, V extends BaseViewTe
     protected abstract void initWidget(Bundle savedInstanceState);
 
     protected void initToolbar(Bundle savedInstanceState) {//对toolbar 做一些设置
+
+
+
+
+
+
+
+
     }
 
 //    public BaseDialogFragment.BaseDialogListener getDialogListener() {

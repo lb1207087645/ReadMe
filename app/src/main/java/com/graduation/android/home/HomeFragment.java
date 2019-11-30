@@ -1,18 +1,17 @@
 package com.graduation.android.home;
 
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 
 import com.graduation.android.R;
 import com.graduation.android.base.BaseMvpFragment;
+import com.graduation.android.base.network.ErrorEntity;
+import com.graduation.android.base.utils.L;
 import com.graduation.android.entity.DesignRes;
-import com.graduation.android.entity.ErrorEntity;
 import com.graduation.android.mvp.HomeContractTest;
 import com.graduation.android.mvp.HomePresenterTest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,19 +19,23 @@ import java.util.List;
  * 测试的HomeFragment
  */
 public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, HomeContractTest.View> implements HomeContractTest.View {
-
-    private SwipeRefreshLayout srl;
-    private RecyclerView rv;
-
-    private int curPage = 1;
-    private ArrayList<DesignRes> datas = new ArrayList<>();
+//
+//    private SwipeRefreshLayout srl;
+//    private RecyclerView rv;
+//
+//    private int curPage = 1;
+//    private ArrayList<DesignRes> datas = new ArrayList<>();
 //    private LoadMoreAdapter adapter;
 
 
+    private TextView tvHello;
+
+    private static final String TAG = "HomeFragment";
+
     @Override
     protected HomeContractTest.Presenter initPresenter() {
-//        return new HomePresenterTest();
-        return null;
+        return new HomePresenterTest(mActivity);
+        // return null;
     }
 
     @Override
@@ -42,12 +45,12 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 
     @Override
     protected void loadData() {
-//        mPresenter.loadList(1);//加载请求
+        mPresenter.getCall();//加载请求
     }
 
     @Override
     protected void initView(View view) {
-//        new TitleBuilder(view).setTitleText(getString(R.string.tab1));
+        tvHello = view.findViewById(R.id.tv_hello);
 //
 //        srl = (SwipeRefreshLayout) view.findViewById(R.id.srl);
 //        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -58,7 +61,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 //        });
 //
 //        rv = (RecyclerView) view.findViewById(R.id.rv);
-//        rv.addItemDecoration(new GridSpacingDecorator(DisplayUtils.dp2px(mActivity, 8)));
+//        rv.addItemDecoration(new GridSpacingDecorator(DensityUtils.dp2px(mActivity, 8)));
 //        GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity, 2);
 //        rv.setLayoutManager(gridLayoutManager);
 //
@@ -89,6 +92,11 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 //        adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void loadSimple(String out) {
+        tvHello.setText(out);
+    }
+
 
     @Override
     public boolean isActive() {
@@ -107,7 +115,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 
     @Override
     public void dismissProgress() {
-        srl.setRefreshing(false);
+//        srl.setRefreshing(false);
     }
 
     @Override
@@ -125,8 +133,11 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 
     }
 
+
     @Override
     public void showErr(ErrorEntity err) {
+        L.d(TAG, err.errMsg);
+
 
     }
 

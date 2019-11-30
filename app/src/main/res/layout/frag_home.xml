@@ -4,8 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/include_titlebar" />
+<!--    <include layout="@layout/include_titlebar" />-->
 
-    <include layout="@layout/include_refresh_list" />
+<!--    <include layout="@layout/include_refresh_list" />-->
 
+
+
+    <TextView
+        android:id="@+id/tv_hello"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

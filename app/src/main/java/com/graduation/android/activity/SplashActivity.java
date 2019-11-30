@@ -9,8 +9,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.graduation.android.R;
+import com.graduation.android.base.BaseActivity;
 import com.graduation.android.base.BaseMvpActivity;
 import com.graduation.android.base.IPresenter;
+import com.graduation.android.base.network.ErrorEntity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +31,7 @@ import io.reactivex.observers.DisposableObserver;
 /**
  * 启动页
  */
-public class SplashActivity extends BaseMvpActivity {
+public class SplashActivity extends BaseActivity {
 
 
     @BindView(R.id.gifImageView)
@@ -108,7 +110,7 @@ public class SplashActivity extends BaseMvpActivity {
         Intent intent = new Intent();
         intent.setClass(SplashActivity.this, MainActivity.class);
         startActivity(intent);
-//        finish();
+        finish();
     }
 
     @OnClick(R.id.fl_ad)
@@ -156,6 +158,11 @@ public class SplashActivity extends BaseMvpActivity {
 
     @Override
     public void showTip(String message) {
+
+    }
+
+    @Override
+    public void showErr(ErrorEntity err) {
 
     }
 }

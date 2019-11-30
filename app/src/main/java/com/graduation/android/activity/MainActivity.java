@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.graduation.android.R;
 import com.graduation.android.adapter.MainAdapter;
+import com.graduation.android.base.BaseActivity;
 import com.graduation.android.base.BaseMvpActivity;
 import com.graduation.android.base.IPresenter;
 import com.graduation.android.home.HomeFragment;
@@ -26,7 +27,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * 首页
  */
-public class MainActivity extends BaseMvpActivity {
+public class MainActivity extends BaseActivity {
 
 
     @BindView(R.id.main_bottom_tab_layout)
@@ -191,6 +192,12 @@ public class MainActivity extends BaseMvpActivity {
 
     @Override
     public boolean isActive() {
+        return false;
+    }
+
+
+    @Override
+    protected boolean isUseToolbar() {
         return false;
     }
 

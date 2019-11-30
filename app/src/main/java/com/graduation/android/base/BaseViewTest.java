@@ -16,7 +16,8 @@
 
 package com.graduation.android.base;
 
-import com.graduation.android.entity.ErrorEntity;
+
+import com.graduation.android.base.network.ErrorEntity;
 
 /**
  * View 层
