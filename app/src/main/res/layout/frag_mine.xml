@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--    <include layout="@layout/include_titlebar" />-->
+
+    <!--    <include layout="@layout/include_refresh_list" />-->
+
+
+    <TextView
+        android:id="@+id/tv_personal_file"
+        style="@style/setting_style"
+        android:text="个人资料" />
+
+    <View style="@style/line" />
+
+    <TextView
+        android:id="@+id/tv_about"
+        style="@style/setting_style"
+        android:text="关于" />
+
+    <View style="@style/line" />
+
+    <TextView
+        android:id="@+id/tv_share"
+        style="@style/setting_style"
+        android:text="分享给好友" />
+
+    <View style="@style/line" />
+</LinearLayout>
