@@ -17,6 +17,7 @@ import com.graduation.android.base.BaseMvpActivity;
 import com.graduation.android.base.IPresenter;
 import com.graduation.android.home.HomeFragment;
 import com.graduation.android.mine.MineFragment;
+import com.graduation.android.news.NewsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +75,7 @@ public class MainActivity extends BaseActivity {
     private void initTab() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
-        fragments.add(new HomeFragment());
+        fragments.add(new NewsFragment());
         fragments.add(new HomeFragment());
         fragments.add(new MineFragment());
         vpAdapter = new MainAdapter(getSupportFragmentManager(), fragments);

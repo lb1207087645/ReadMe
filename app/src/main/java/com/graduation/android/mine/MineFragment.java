@@ -2,14 +2,12 @@ package com.graduation.android.mine;
 
 import android.app.Dialog;
 import android.view.View;
-import android.widget.TextView;
 
 import com.graduation.android.R;
 import com.graduation.android.base.BaseMvpFragment;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.base.utils.L;
-import com.graduation.android.home.HomeFragment;
-import com.graduation.android.mvp.HomeContractTest;
+import com.graduation.android.home.mvp.HomeContractTest;
 import com.graduation.android.share.utils.DialogUtil;
 import com.graduation.android.share.utils.ShareSdkUtils;
 

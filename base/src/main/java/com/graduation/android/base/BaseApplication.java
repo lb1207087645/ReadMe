@@ -3,6 +3,7 @@ package com.graduation.android.base;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.graduation.android.base.image.ImageLoaderManager;
 import com.graduation.android.base.utils.L;
 
 import java.util.Collections;
@@ -21,7 +22,7 @@ public class BaseApplication extends CommonApplication {
     public void onCreate() {
         super.onCreate();
         registerActivityListener();
-//        ImageLoaderManager.getInstance().init();
+        ImageLoaderManager.getInstance().init();//初始化imageLoader相关
 
 //        CommonState.Config.initGlobalConfig();
     }
@@ -29,13 +30,13 @@ public class BaseApplication extends CommonApplication {
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
-//        ImageLoaderManager.getInstance().onTrimMemory(this, level);
+        ImageLoaderManager.getInstance().onTrimMemory(this, level);
     }
 
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-//        ImageLoaderManager.getInstance().onLowMemory(this);
+        ImageLoaderManager.getInstance().onLowMemory(this);
     }
 
     /**

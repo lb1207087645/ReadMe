@@ -1,25 +1,23 @@
-package com.graduation.android.mvp;
+package com.graduation.android.news.mvp;
 
 import android.app.Activity;
 
-import com.google.gson.reflect.TypeToken;
 import com.graduation.android.base.BasePresenterTest;
-import com.graduation.android.base.model.CacheMode;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.entity.DesignRes;
-
 import com.graduation.android.http.BaseObserver;
 import com.graduation.android.http.BaseResponse;
 import com.graduation.android.model.HomeModel;
+import com.graduation.android.model.NewsModel;
 import com.graduation.android.model.Translation3;
 
 import java.util.List;
 
 
 /**
- * home的p层
+ * 新闻的p层
  */
-public class HomePresenterTest extends BasePresenterTest<HomeContractTest.View> implements HomeContractTest.Presenter {
+public class NewsPresenterTest extends BasePresenterTest<NewsContractTest.View> implements NewsContractTest.Presenter {
 
     public List<DesignRes> datas;
 
@@ -30,14 +28,14 @@ public class HomePresenterTest extends BasePresenterTest<HomeContractTest.View> 
         loadData(1);
     }
 
-    private HomeModel model;
-    private HomePresenterTest mHomePresenterTest;
+    private NewsModel model;
+    private NewsPresenterTest mHomePresenterTest;
 
-    public HomePresenterTest(Activity activity) {
+    public NewsPresenterTest(Activity activity) {
         mActivity = activity;
         mHomePresenterTest = this;
 
-        model = new HomeModel();
+        model = new NewsModel();
     }
 
 

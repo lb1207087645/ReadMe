@@ -1,24 +1,26 @@
-package com.graduation.android.home;
+package com.graduation.android.news;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-
 import com.graduation.android.R;
 import com.graduation.android.base.BaseMvpFragment;
+import com.graduation.android.base.image.ImageLoadConfig;
+import com.graduation.android.base.image.ImageLoaderManager;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.base.utils.L;
 import com.graduation.android.entity.DesignRes;
-import com.graduation.android.home.mvp.HomeContractTest;
-import com.graduation.android.home.mvp.HomePresenterTest;
+import com.graduation.android.news.mvp.NewsContractTest;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 
 /**
- * 测试的HomeFragment
+ * 新闻的NewsFragment
  */
-public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, HomeContractTest.View> implements HomeContractTest.View {
+public class NewsFragment extends BaseMvpFragment<NewsContractTest.Presenter, NewsContractTest.View> implements NewsContractTest.View {
 //
 //    private SwipeRefreshLayout srl;
 //    private RecyclerView rv;
@@ -30,27 +32,44 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 
     private TextView tvHello;
 
-    private static final String TAG = "HomeFragment";
+
+
+    ImageView iv_image;//图片显示
+
+    private static final String TAG = "NewsFragment";
+
+    private ImageLoadConfig appTopicTitleBuild;
 
     @Override
-    protected HomeContractTest.Presenter initPresenter() {
-        return new HomePresenterTest(mActivity);
-        // return null;
+    protected NewsContractTest.Presenter initPresenter() {
+       // return new NewsPresenterTest(mActivity);
+         return null;
     }
 
     @Override
     protected int getLayoutId() {
-        return R.layout.frag_home;
+        return R.layout.frag_news;
     }
 
     @Override
     protected void loadData() {
-        mPresenter.getCall();//加载请求
+//        mPresenter.getCall();//加载请求
+
     }
 
     @Override
     protected void initView(View view) {
         tvHello = view.findViewById(R.id.tv_hello);
+
+        iv_image = view.findViewById(R.id.iv_image);
+//
+        appTopicTitleBuild = new ImageLoadConfig.Builder()
+                .setPlaceHolderResId(R.drawable.recommend_item_app_topic_title_default)
+                .setErrorResId(R.drawable.recommend_item_app_topic_title_default)
+                .build();
+
+        ImageLoaderManager.getInstance().loadImage(iv_image, "https://c1.ifengimg.com/feather/images/48200/2019/11/29/15749901886009038.jpg", appTopicTitleBuild);
+
 //
 //        srl = (SwipeRefreshLayout) view.findViewById(R.id.srl);
 //        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -90,6 +109,10 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 //        adapter.setStatus(datas.size() == CommonConstants.COUNT_OF_PAGE
 //                ? LoadMoreAdapter.STATUS_HAVE_MORE : LoadMoreAdapter.STATUS_LOADED_ALL);
 //        adapter.notifyDataSetChanged();
+
+       // iv_image.
+
+
     }
 
     @Override

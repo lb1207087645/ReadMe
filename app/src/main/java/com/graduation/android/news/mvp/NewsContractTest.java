@@ -1,13 +1,15 @@
-package com.graduation.android.mvp;
+package com.graduation.android.news.mvp;
 
 import com.graduation.android.base.BaseViewTest;
 import com.graduation.android.base.IPresenter;
 import com.graduation.android.entity.DesignRes;
-import com.graduation.android.model.Translation3;
 
 import java.util.List;
 
-public interface HomeContractTest {
+/**
+ * 新闻的contract
+ */
+public interface NewsContractTest {
 
     interface View extends BaseViewTest {
 
