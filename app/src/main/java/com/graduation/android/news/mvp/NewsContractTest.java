@@ -2,7 +2,10 @@ package com.graduation.android.news.mvp;
 
 import com.graduation.android.base.BaseViewTest;
 import com.graduation.android.base.IPresenter;
+import com.graduation.android.bean.NewsDetail;
 import com.graduation.android.entity.DesignRes;
+import com.graduation.android.model.FreshBean;
+import com.graduation.android.model.FreshNewsBean;
 
 import java.util.List;
 
@@ -15,7 +18,9 @@ public interface NewsContractTest {
 
         void loadListSuccess(int page, List<DesignRes> datas);
 
-        void loadSimple(String out);
+        void loadSimple(List<NewsDetail> list);
+
+        void loadFreshNews(List<FreshBean.PostsBean> postsBean);//煎蛋新闻
 
     }
 
@@ -25,7 +30,9 @@ public interface NewsContractTest {
 
         void pullToLoadList();
 
-        void getCall();
+        void getCall(String id, String action, int pullNum);
+
+        void getFreshNews(int page);
 
     }
 }

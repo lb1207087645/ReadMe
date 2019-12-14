@@ -17,8 +17,14 @@ import io.reactivex.exceptions.CompositeException;
 import okhttp3.ResponseBody;
 import retrofit2.HttpException;
 
+
+/**
+ * BaseObserver用法
+ *
+ * @param <T>
+ */
 public abstract class BaseObserver<T>
-        extends BaseSimpleObserver<BaseResponse<T>>
+        extends BaseSimpleObserver<T>
         implements IErrorHandler {
 
     public class ExtendErrorConstant extends ErrorConstant {
@@ -38,25 +44,34 @@ public abstract class BaseObserver<T>
 
     /**
      * 网络请求数据成功回调
-     *
-     * @param baseResponse
+     * <p>
+     * //     * @param baseResponse
      */
-    public abstract void onData(BaseResponse<T> baseResponse);
+//    public abstract void onData(BaseResponse<T> baseResponse);
+    public abstract void onData(T t);
 
+    /**
+     * 最后调用地方
+     * <p>
+     * //     * @param baseResponse
+     */
+//    @Override
+//    public void onNext(@NonNull BaseResponse<T> baseResponse) {
+//        //__Cache__ 缓存生效模式下发的result code
+//        //loadremote 情况下 ResultCode:__Cache__ 代表使用本地缓存
+////        if (baseResponse.isSuccess() || "__Cache__".equals(baseResponse.getCode())) {
+////            onData(baseResponse);
+////        } else {
+////            //业务错误
+////            // TODO: 2017/8/18
+////            onError(new ErrorEntity(baseResponse.getCode(), baseResponse.getMsg()));
+////        }
+//        onData(baseResponse);
+//
+//    }
     @Override
-    public void onNext(@NonNull BaseResponse<T> baseResponse) {
-        //__Cache__ 缓存生效模式下发的result code
-        //loadremote 情况下 ResultCode:__Cache__ 代表使用本地缓存
-//        if (baseResponse.isSuccess() || "__Cache__".equals(baseResponse.getCode())) {
-//            onData(baseResponse);
-//        } else {
-//            //业务错误
-//            // TODO: 2017/8/18
-//            onError(new ErrorEntity(baseResponse.getCode(), baseResponse.getMsg()));
-//        }
-
-
-        onData(baseResponse);
+    public void onNext(T t) {
+        onData(t);
     }
 
     @Override

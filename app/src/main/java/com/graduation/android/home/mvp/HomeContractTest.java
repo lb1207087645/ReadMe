@@ -22,7 +22,7 @@ public interface HomeContractTest {
 
         void pullToLoadList();
 
-        void getCall();
+        void getCall();//
 
     }
 }

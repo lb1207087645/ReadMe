@@ -34,8 +34,8 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 
     @Override
     protected HomeContractTest.Presenter initPresenter() {
-        return new HomePresenterTest(mActivity);
-        // return null;
+       // return new HomePresenterTest(mActivity);
+         return null;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 
     @Override
     protected void loadData() {
-        mPresenter.getCall();//加载请求
+      //  mPresenter.getCall();//加载请求
     }
 
     @Override

@@ -24,7 +24,7 @@ import okhttp3.Response;
 
 
 /**
- * 不使用Okhttp自带的缓存
+ * 不使用Okhttp自带的缓存，默认是这个
  */
 public class NoCacheInterceptor implements Interceptor {
     @Override

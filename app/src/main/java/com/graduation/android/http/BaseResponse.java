@@ -16,7 +16,7 @@ public class BaseResponse<T> implements IResponse<T> {
     public String sign;
     @SerializedName("resultMessage")
     public String message;
-    @SerializedName(value = "data", alternate = "content")
+    @SerializedName(value = "data", alternate = "status")
     public T data;
 
     @Override

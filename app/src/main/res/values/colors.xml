@@ -69,4 +69,5 @@
     <color name="txt_light_gray">#CCCCCC</color>
 
     <color name="replaceable_color_title">@color/common_white</color>
+    <color name="news_tv_source_color">#a3a3a3</color>
 </resources>

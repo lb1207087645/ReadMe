@@ -1,17 +1,27 @@
 package com.graduation.android.news.mvp;
 
 import android.app.Activity;
+import android.util.Log;
 
+import com.graduation.android.R;
 import com.graduation.android.base.BasePresenterTest;
 import com.graduation.android.base.network.ErrorEntity;
+import com.graduation.android.bean.NewsDetail;
 import com.graduation.android.entity.DesignRes;
 import com.graduation.android.http.BaseObserver;
 import com.graduation.android.http.BaseResponse;
+import com.graduation.android.model.FreshBean;
+import com.graduation.android.model.FreshNewsBean;
 import com.graduation.android.model.HomeModel;
 import com.graduation.android.model.NewsModel;
 import com.graduation.android.model.Translation3;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
 
 
 /**
@@ -28,6 +38,11 @@ public class NewsPresenterTest extends BasePresenterTest<NewsContractTest.View> 
         loadData(1);
     }
 
+    @Override
+    public void getCall(String id, String action, int pullNum) {
+
+    }
+
     private NewsModel model;
     private NewsPresenterTest mHomePresenterTest;
 
@@ -40,15 +55,39 @@ public class NewsPresenterTest extends BasePresenterTest<NewsContractTest.View> 
 
 
     /**
-     * 简单文本回调
+     * 新闻数据回调
      */
+//    @Override
+//    public void getCall(final String id, final String action, int pullNum) {
+//        subscribe(model.getNewsDetail(id, action, pullNum), new BaseObserver<List<NewsDetail>>() {
+//            @Override
+//            public void onError(ErrorEntity err) {
+//                getView().showErr(err);
+//                getView().loadSimple(null);
+//            }
+//
+//            @Override
+//            public void onAfter() {
+//
+//            }
+//
+//            @Override
+//            public void onData(BaseResponse<List<NewsDetail>> baseResponse) {
+//
+//            }
+//
+//
+//        });
+//
+//
+//    }
     @Override
-    public void getCall() {
-        subscribe(model.getAudioDetailInfo(), new BaseObserver<Translation3.content>() {
+    public void getFreshNews(int page) {
+        subscribe(model.getFreshNews(page), new BaseObserver<FreshNewsBean>() {
             @Override
             public void onError(ErrorEntity err) {
                 getView().showErr(err);
-                getView().loadSimple(null);
+                getView().loadFreshNews(null);
             }
 
             @Override
@@ -57,11 +96,25 @@ public class NewsPresenterTest extends BasePresenterTest<NewsContractTest.View> 
             }
 
             @Override
-            public void onData(BaseResponse<Translation3.content> baseResponse) {
-                getView().loadSimple(baseResponse.data.out);
+            public void onData(FreshNewsBean baseResponse) {
+                getView().loadFreshNews(changeServerData(baseResponse));//转化数据
             }
         });
+    }
 
+    private List<FreshBean.PostsBean> changeServerData(FreshNewsBean freshNewsBean) {
+        List<FreshBean.PostsBean> studyBeanList = new ArrayList<>();
+        for (int i = 0; i < freshNewsBean.getPosts().size(); i++) {
+            FreshNewsBean.PostsBean postsBean = freshNewsBean.getPosts().get(i);
+            FreshBean.PostsBean studyBean = new FreshBean.PostsBean();
+            studyBean.setItemType(NewsDetail.ItemBean.TYPE_DOC_TITLEIMG);
+            studyBean.setTitle(postsBean.getTitle());
+//            studyBean.setUrl(postsBean.getUrl());
+           // studyBean.getAuthor().setName(postsBean.getAuthor().getName());
+            studyBean.setComment_count(postsBean.getComment_count());
+            studyBeanList.add(studyBean);
+        }
+        return studyBeanList;
     }
 
 

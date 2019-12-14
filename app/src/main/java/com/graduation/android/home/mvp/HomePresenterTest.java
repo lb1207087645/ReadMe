@@ -28,6 +28,11 @@ public class HomePresenterTest extends BasePresenterTest<HomeContractTest.View> 
         loadData(1);
     }
 
+    @Override
+    public void getCall() {
+
+    }
+
     private HomeModel model;
     private HomePresenterTest mHomePresenterTest;
 
@@ -42,27 +47,29 @@ public class HomePresenterTest extends BasePresenterTest<HomeContractTest.View> 
     /**
      * 简单文本回调
      */
-    @Override
-    public void getCall() {
-        subscribe(model.getAudioDetailInfo(), new BaseObserver<Translation3.content>() {
-            @Override
-            public void onError(ErrorEntity err) {
-                getView().showErr(err);
-                getView().loadSimple(null);
-            }
-
-            @Override
-            public void onAfter() {
-
-            }
-
-            @Override
-            public void onData(BaseResponse<Translation3.content> baseResponse) {
-                getView().loadSimple(baseResponse.data.out);
-            }
-        });
-
-    }
+//    @Override
+//    public void getCall() {
+//        subscribe(model.getAudioDetailInfo(), new BaseObserver<Translation3.content>() {
+//            @Override
+//            public void onError(ErrorEntity err) {
+//                getView().showErr(err);
+//                getView().loadSimple(null);
+//            }
+//
+//            @Override
+//            public void onAfter() {
+//
+//            }
+//
+//            @Override
+//            public void onData(BaseResponse<Translation3.content> baseResponse) {
+//                getView().loadSimple(baseResponse.data.out);
+//            }
+//
+//
+//        });
+//
+//    }
 
 
     @Override

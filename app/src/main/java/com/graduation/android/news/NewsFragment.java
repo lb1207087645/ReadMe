@@ -1,16 +1,25 @@
 package com.graduation.android.news;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.graduation.android.R;
+import com.graduation.android.adapter.NewsAdapter;
 import com.graduation.android.base.BaseMvpFragment;
 import com.graduation.android.base.image.ImageLoadConfig;
 import com.graduation.android.base.image.ImageLoaderManager;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.base.utils.L;
+import com.graduation.android.bean.NewsDetail;
 import com.graduation.android.entity.DesignRes;
+import com.graduation.android.model.FreshBean;
+import com.graduation.android.model.FreshNewsBean;
 import com.graduation.android.news.mvp.NewsContractTest;
+import com.graduation.android.news.mvp.NewsPresenterTest;
 
 import java.util.List;
 
@@ -33,8 +42,10 @@ public class NewsFragment extends BaseMvpFragment<NewsContractTest.Presenter, Ne
     private TextView tvHello;
 
 
-
     ImageView iv_image;//图片显示
+
+//    @BindView(R.id.mRecyclerView)
+    RecyclerView mRecyclerView;
 
     private static final String TAG = "NewsFragment";
 
@@ -42,8 +53,8 @@ public class NewsFragment extends BaseMvpFragment<NewsContractTest.Presenter, Ne
 
     @Override
     protected NewsContractTest.Presenter initPresenter() {
-       // return new NewsPresenterTest(mActivity);
-         return null;
+        // return new NewsPresenterTest(mActivity);
+        return new NewsPresenterTest(mActivity);
     }
 
     @Override
@@ -54,13 +65,13 @@ public class NewsFragment extends BaseMvpFragment<NewsContractTest.Presenter, Ne
     @Override
     protected void loadData() {
 //        mPresenter.getCall();//加载请求
-
+        mPresenter.getFreshNews(0);
     }
 
     @Override
     protected void initView(View view) {
         tvHello = view.findViewById(R.id.tv_hello);
-
+        mRecyclerView= view.findViewById(R.id.mRecyclerView);
         iv_image = view.findViewById(R.id.iv_image);
 //
         appTopicTitleBuild = new ImageLoadConfig.Builder()
@@ -68,7 +79,6 @@ public class NewsFragment extends BaseMvpFragment<NewsContractTest.Presenter, Ne
                 .setErrorResId(R.drawable.recommend_item_app_topic_title_default)
                 .build();
 
-        ImageLoaderManager.getInstance().loadImage(iv_image, "https://c1.ifengimg.com/feather/images/48200/2019/11/29/15749901886009038.jpg", appTopicTitleBuild);
 
 //
 //        srl = (SwipeRefreshLayout) view.findViewById(R.id.srl);
@@ -110,14 +120,26 @@ public class NewsFragment extends BaseMvpFragment<NewsContractTest.Presenter, Ne
 //                ? LoadMoreAdapter.STATUS_HAVE_MORE : LoadMoreAdapter.STATUS_LOADED_ALL);
 //        adapter.notifyDataSetChanged();
 
-       // iv_image.
+        // iv_image.
 
 
     }
 
     @Override
-    public void loadSimple(String out) {
-        tvHello.setText(out);
+    public void loadSimple(List<NewsDetail> list) {
+        for (int i = 0; i < list.size(); i++) {
+            Log.d("sddsd", list.get(i) + "");
+
+        }
+
+
+    }
+
+    @Override
+    public void loadFreshNews(List<FreshBean.PostsBean> postsBean) {
+        NewsAdapter newsAdapter = new NewsAdapter(postsBean);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(newsAdapter);
     }
 
 
