@@ -1,2 +1,7 @@
 # ReadMe
-毕业设计项目
+
+一个练手的阅读类app。
+
+采用RXJava+Retrofit+mvp 模式，glide实现图片请求框架。
+
+
