@@ -1,8 +1,6 @@
 package com.graduation.android.mine
 
-import android.support.v4.media.session.PlaybackStateCompat
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import cn.sharesdk.framework.Platform
 import cn.sharesdk.framework.PlatformActionListener
@@ -16,7 +14,7 @@ import com.graduation.android.share.utils.ShareSdkUtils
 import java.util.HashMap
 
 /**
- * 我的页面
+ * 我的页面，kotlin版
  */
 class MineFragment2 : BaseMvpFragment<IPresenter<BaseViewTest>, BaseViewTest>(),
     PlatformActionListener {
@@ -31,7 +29,7 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseViewTest>, BaseViewTest>(),
     override fun onError(p0: Platform?, p1: Int, p2: Throwable?) {
     }
 
-    private var mShareUtils: ShareSdkUtils? = null
+    private var mShareUtils: ShareSdkUtils? = null//定义一个变量，可为null类型
 
     override fun dismissProgress() {
     }
@@ -67,6 +65,9 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseViewTest>, BaseViewTest>(),
     }
 
 
+    /**
+     *分享点击
+     */
     override fun initView(view: View) {
         var tvShare = view.findViewById<TextView>(R.id.tv_share)
         tvShare.setOnClickListener {
@@ -81,8 +82,8 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseViewTest>, BaseViewTest>(),
                 val finalShareUrl = "http://www.baidu.com"
                 dialogUtil.setmDialogClickListener(object : DialogUtil.OnClickListener {
                     override fun onQqClick() {
-                        mShareUtils = ShareSdkUtils(context)
-                        mShareUtils!!.shareQQ_WebPage(
+                        mShareUtils = ShareSdkUtils(context)//实例化
+                        mShareUtils!!.shareQQ_WebPage(//!!"加在变量名后，如果对象为null，那么系统一定会报异常！
                             finalShareUrl,
                             title,
                             content,

@@ -16,7 +16,6 @@ import com.graduation.android.base.BaseActivity;
 import com.graduation.android.base.BaseMvpActivity;
 import com.graduation.android.base.IPresenter;
 import com.graduation.android.home.HomeFragment;
-import com.graduation.android.mine.MineFragment;
 import com.graduation.android.mine.MineFragment2;
 import com.graduation.android.news.NewsFragment;
 
@@ -78,7 +77,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(new HomeFragment());
         fragments.add(new NewsFragment());
         fragments.add(new HomeFragment());
-        fragments.add(new MineFragment2());
+        fragments.add(new MineFragment2());//我的
         vpAdapter = new MainAdapter(getSupportFragmentManager(), fragments);
         mainViewPager.setAdapter(vpAdapter);
         mainTabLayout.setupWithViewPager(mainViewPager);

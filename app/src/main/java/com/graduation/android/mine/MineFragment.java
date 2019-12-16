@@ -18,7 +18,7 @@ import cn.sharesdk.framework.PlatformActionListener;
 
 
 /**
- * 我的页面Fragment
+ * 我的页面Fragment,Java版
  */
 public class MineFragment extends BaseMvpFragment implements PlatformActionListener {
 

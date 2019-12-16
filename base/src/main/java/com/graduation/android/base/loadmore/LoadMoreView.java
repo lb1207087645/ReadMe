@@ -7,8 +7,10 @@ import com.graduation.android.base.adapter.BaseViewHolder;
 
 
 /**
- * @author linyt
- * @Email lytjackson@gmail.com
+ * 加载更多
+ *
+ * @author linbin
+ * @Email
  * @date 2017/7/18 0018
  */
 public abstract class LoadMoreView {
