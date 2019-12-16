@@ -45,6 +45,13 @@ public abstract class BaseMvpFragment<P extends IPresenter<V>, V extends BaseVie
     }
 
 
+    public void setViewOnClickListener(View.OnClickListener clickListener, View... views) {
+        for (View view : views) {
+            view.setOnClickListener(clickListener);
+        }
+    }
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
