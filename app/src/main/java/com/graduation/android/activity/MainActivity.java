@@ -18,6 +18,7 @@ import com.graduation.android.base.IPresenter;
 import com.graduation.android.home.HomeFragment;
 import com.graduation.android.mine.MineFragment2;
 import com.graduation.android.news.NewsFragment;
+import com.graduation.android.web.WebViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +77,7 @@ public class MainActivity extends BaseActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new NewsFragment());
-        fragments.add(new HomeFragment());
+        fragments.add(new WebViewFragment());
         fragments.add(new MineFragment2());//我的
         vpAdapter = new MainAdapter(getSupportFragmentManager(), fragments);
         mainViewPager.setAdapter(vpAdapter);
@@ -126,7 +127,7 @@ public class MainActivity extends BaseActivity {
                     case "新闻":
                         imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.main_news_icon_selector));
                         break;
-                    case "天气":
+                    case "商城":
                         imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.main_weather_icon_selector));
                         break;
                     case "我的":

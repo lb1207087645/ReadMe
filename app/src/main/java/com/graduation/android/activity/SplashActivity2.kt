@@ -19,9 +19,7 @@ class SplashActivity2 : BaseActivity<IPresenter<BaseViewTest>, BaseViewTest>() {
 
 
     override fun isActive(): Boolean {
-
-
-
+        return false
     }
 
     override fun showProgress() {
