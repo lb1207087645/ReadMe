@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity {
     /**
      * tab 页String
      */
-    private String[] tabStrArray = {"首页", "新闻", "天气", "我的"};
+    private String[] tabStrArray = {"首页", "新闻", "商城", "我的"};
 
     private MainAdapter vpAdapter;
 
@@ -120,17 +120,17 @@ public class MainActivity extends BaseActivity {
                 textView = tabView.findViewById(R.id.main_tab_title);
                 textView.setText(tabStr);
 
-                switch (tabStr) {
-                    case "首页":
+                switch (i) {
+                    case 0:
                         imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.main_recommend_icon_selector));
                         break;
-                    case "新闻":
+                    case 1:
                         imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.main_news_icon_selector));
                         break;
-                    case "商城":
+                    case 2:
                         imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.main_weather_icon_selector));
                         break;
-                    case "我的":
+                    case 3:
                         imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.main_mine_icon_selector));
                         break;
                     default:
