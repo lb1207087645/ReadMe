@@ -2,14 +2,10 @@ package com.graduation.android.home.mvp;
 
 import android.app.Activity;
 
-import com.graduation.android.base.BasePresenterTest;
-import com.graduation.android.base.network.ErrorEntity;
+import com.graduation.android.base.mvp.BasePresenterTest;
 import com.graduation.android.entity.DesignRes;
 
-import com.graduation.android.http.BaseObserver;
-import com.graduation.android.http.BaseResponse;
 import com.graduation.android.model.HomeModel;
-import com.graduation.android.model.Translation3;
 
 import java.util.List;
 

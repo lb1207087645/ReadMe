@@ -1,13 +1,14 @@
 package com.graduation.android.mine
 
+import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import cn.sharesdk.framework.Platform
 import cn.sharesdk.framework.PlatformActionListener
 import com.graduation.android.R
-import com.graduation.android.base.BaseMvpFragment
-import com.graduation.android.base.BaseViewTest
-import com.graduation.android.base.IPresenter
+import com.graduation.android.base.mvp.BaseMvpFragment
+import com.graduation.android.base.mvp.BaseViewTest
+import com.graduation.android.base.mvp.IPresenter
 import com.graduation.android.base.network.ErrorEntity
 import com.graduation.android.share.utils.DialogUtil
 import com.graduation.android.share.utils.ShareSdkUtils
@@ -18,59 +19,9 @@ import java.util.HashMap
  */
 class MineFragment2 : BaseMvpFragment<IPresenter<BaseViewTest>, BaseViewTest>(),
     PlatformActionListener {
-
-
-    override fun onComplete(p0: Platform?, p1: Int, p2: HashMap<String, Any>?) {
-    }
-
-    override fun onCancel(p0: Platform?, p1: Int) {
-    }
-
-    override fun onError(p0: Platform?, p1: Int, p2: Throwable?) {
-    }
-
-    private var mShareUtils: ShareSdkUtils? = null//定义一个变量，可为null类型
-
-    override fun dismissProgress() {
-    }
-
-    override fun showLoadingDialog(msg: String?) {
-    }
-
-    override fun hideLoadingDialog() {
-    }
-
-    override fun showErr(err: ErrorEntity?) {
-    }
-
-    override fun getLayoutId(): Int {//重写layout布局的findViewById
-        return R.layout.frag_mine
-    }
-
-    override fun showErrorView(errorType: String?) {
-    }
-
-    override fun showLoadingView() {
-    }
-
-    override fun initPresenter() = null
-
-    override fun showTip(message: String?) {
-    }
-
-    override fun showErrorView() {
-    }
-
-    override fun showEmptyView(imageId: Int) {
-    }
-
-
-    /**
-     *分享点击
-     */
-    override fun initView(view: View) {
-        var tvShare = view.findViewById<TextView>(R.id.tv_share)
-        tvShare.setOnClickListener {
+    override fun initView(view: View?, savedInstanceState: Bundle?) {
+        var tvShare = view?.findViewById<TextView>(R.id.tv_share)
+        tvShare?.setOnClickListener {
 
             try {
                 //                    final Bitmap bmp = BitmapFactory.decodeResource(getResources(), cn.gtscn.usercenter.R.mipmap.icon_share_friends);
@@ -147,9 +98,54 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseViewTest>, BaseViewTest>(),
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
         }
     }
+
+
+    override fun onComplete(p0: Platform?, p1: Int, p2: HashMap<String, Any>?) {
+    }
+
+    override fun onCancel(p0: Platform?, p1: Int) {
+    }
+
+    override fun onError(p0: Platform?, p1: Int, p2: Throwable?) {
+    }
+
+    private var mShareUtils: ShareSdkUtils? = null//定义一个变量，可为null类型
+
+    override fun dismissProgress() {
+    }
+
+    override fun showLoadingDialog(msg: String?) {
+    }
+
+    override fun hideLoadingDialog() {
+    }
+
+    override fun showErr(err: ErrorEntity?) {
+    }
+
+    override fun getLayoutId(): Int {//重写layout布局的findViewById
+        return R.layout.frag_mine
+    }
+
+    override fun showErrorView(errorType: String?) {
+    }
+
+    override fun showLoadingView() {
+    }
+
+    override fun initPresenter() = null
+
+    override fun showTip(message: String?) {
+    }
+
+    override fun showErrorView() {
+    }
+
+    override fun showEmptyView(imageId: Int) {
+    }
+
 
     override fun showProgress() {
     }

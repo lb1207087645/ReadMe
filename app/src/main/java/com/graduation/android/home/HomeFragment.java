@@ -1,16 +1,16 @@
 package com.graduation.android.home;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 
 import com.graduation.android.R;
-import com.graduation.android.base.BaseMvpFragment;
+import com.graduation.android.base.mvp.BaseMvpFragment;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.base.utils.L;
 import com.graduation.android.entity.DesignRes;
 import com.graduation.android.home.mvp.HomeContractTest;
-import com.graduation.android.home.mvp.HomePresenterTest;
 
 import java.util.List;
 
@@ -44,12 +44,12 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
     }
 
     @Override
-    protected void loadData() {
+    public void loadData() {
       //  mPresenter.getCall();//加载请求
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initView(View view, Bundle savedInstanceState) {
         tvHello = view.findViewById(R.id.tv_hello);
 //
 //        srl = (SwipeRefreshLayout) view.findViewById(R.id.srl);
@@ -155,6 +155,7 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
     public void showLoadingView() {
 
     }
+
 
     @Override
     public void showEmptyView(int imageId) {

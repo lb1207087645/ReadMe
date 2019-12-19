@@ -1,27 +1,18 @@
 package com.graduation.android.news.mvp;
 
 import android.app.Activity;
-import android.util.Log;
 
-import com.graduation.android.R;
-import com.graduation.android.base.BasePresenterTest;
+import com.graduation.android.base.mvp.BasePresenterTest;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.bean.NewsDetail;
 import com.graduation.android.entity.DesignRes;
 import com.graduation.android.http.BaseObserver;
-import com.graduation.android.http.BaseResponse;
 import com.graduation.android.model.FreshBean;
 import com.graduation.android.model.FreshNewsBean;
-import com.graduation.android.model.HomeModel;
 import com.graduation.android.model.NewsModel;
-import com.graduation.android.model.Translation3;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
-import io.reactivex.annotations.NonNull;
-import io.reactivex.functions.Function;
 
 
 /**
@@ -49,7 +40,6 @@ public class NewsPresenterTest extends BasePresenterTest<NewsContractTest.View> 
     public NewsPresenterTest(Activity activity) {
         mActivity = activity;
         mHomePresenterTest = this;
-
         model = new NewsModel();
     }
 
@@ -83,10 +73,12 @@ public class NewsPresenterTest extends BasePresenterTest<NewsContractTest.View> 
 //    }
     @Override
     public void getFreshNews(int page) {
+        getView().showLoadingView();
         subscribe(model.getFreshNews(page), new BaseObserver<FreshNewsBean>() {
             @Override
             public void onError(ErrorEntity err) {
                 getView().showErr(err);
+
                 getView().loadFreshNews(null);
             }
 
@@ -97,6 +89,7 @@ public class NewsPresenterTest extends BasePresenterTest<NewsContractTest.View> 
 
             @Override
             public void onData(FreshNewsBean baseResponse) {
+                getView().showContentView();
                 getView().loadFreshNews(changeServerData(baseResponse));//转化数据
             }
         });
@@ -110,7 +103,7 @@ public class NewsPresenterTest extends BasePresenterTest<NewsContractTest.View> 
             studyBean.setItemType(NewsDetail.ItemBean.TYPE_DOC_TITLEIMG);
             studyBean.setTitle(postsBean.getTitle());
 //            studyBean.setUrl(postsBean.getUrl());
-           // studyBean.getAuthor().setName(postsBean.getAuthor().getName());
+            // studyBean.getAuthor().setName(postsBean.getAuthor().getName());
             studyBean.setComment_count(postsBean.getComment_count());
             studyBeanList.add(studyBean);
         }

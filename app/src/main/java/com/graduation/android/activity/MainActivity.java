@@ -12,9 +12,8 @@ import android.widget.TextView;
 
 import com.graduation.android.R;
 import com.graduation.android.adapter.MainAdapter;
-import com.graduation.android.base.BaseActivity;
-import com.graduation.android.base.BaseMvpActivity;
-import com.graduation.android.base.IPresenter;
+import com.graduation.android.base.mvp.BaseActivity;
+import com.graduation.android.base.mvp.IPresenter;
 import com.graduation.android.home.HomeFragment;
 import com.graduation.android.mine.MineFragment2;
 import com.graduation.android.news.NewsFragment;
@@ -24,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import io.reactivex.disposables.Disposable;
 
 
 /**
@@ -77,7 +75,7 @@ public class MainActivity extends BaseActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new HomeFragment());
         fragments.add(new NewsFragment());
-        fragments.add(new WebViewFragment());
+        fragments.add(new WebViewFragment());//商城
         fragments.add(new MineFragment2());//我的
         vpAdapter = new MainAdapter(getSupportFragmentManager(), fragments);
         mainViewPager.setAdapter(vpAdapter);

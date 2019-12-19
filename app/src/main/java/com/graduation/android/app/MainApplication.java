@@ -10,8 +10,11 @@ import android.util.SparseArray;
 import com.graduation.android.BuildConfig;
 import com.graduation.android.base.BaseApplication;
 import com.graduation.android.base.CommonApplication;
+import com.graduation.android.base.ModuleBaseDiffImpl;
+import com.graduation.android.base.diff.ModuleBaseDiffHelper;
 import com.graduation.android.base.model.CacheMode;
 import com.graduation.android.base.network.RetrofitServiceManager;
+import com.graduation.android.base.widget.state.CommonState;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -48,8 +51,6 @@ public class MainApplication extends BaseApplication implements Application.Acti
     @Override
     public void onCreate() {
         super.onCreate();
-
-
         // retrofit全局配置
         try {
             RetrofitServiceManager retrofitServiceManager = RetrofitServiceManager.getInstance()
@@ -87,7 +88,9 @@ public class MainApplication extends BaseApplication implements Application.Acti
             e.printStackTrace();
         }
 
+        ModuleBaseDiffHelper.getInstance().registerModuleBaseDiff(new ModuleBaseDiffImpl()); // 初始化IModuleBaseDiff，加载loadview
 
+        CommonState.Config.initGlobalConfig();//全局状态配置loadsir加载框架
     }
 
     private void initAudio() {

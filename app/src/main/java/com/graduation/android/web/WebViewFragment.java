@@ -1,9 +1,7 @@
 package com.graduation.android.web;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -12,17 +10,17 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.graduation.android.R;
-import com.graduation.android.base.BaseMvpFragment;
-import com.graduation.android.base.IPresenter;
+import com.graduation.android.base.mvp.BaseMvpFragment;
+import com.graduation.android.base.mvp.IPresenter;
 import com.graduation.android.base.network.ErrorEntity;
 
 
 /**
- * 商城web页
+ * 商城web页，参考呼吸卫士的web页
  */
 public class WebViewFragment extends BaseMvpFragment {
 
-    String mUrl = "http://wx.huxiweishi.cn/wechatbreath/shop/mallIndex.jsp?patientId=161025103116010003";//呼吸卫士
+    String mUrl = "http://wx.huxiweishi.cn/wechatbreath/shop/mallIndex.jsp?patientId=161025103116010003";//呼吸卫士测试数据
     /**
      * WebView object
      */
@@ -39,7 +37,7 @@ public class WebViewFragment extends BaseMvpFragment {
     }
 
     @Override
-    protected void loadData() {
+    public void loadData() {
 
         final WebSettings webSettings = mWebView.getSettings();
         webSettings.setDomStorageEnabled(true);
@@ -89,7 +87,7 @@ public class WebViewFragment extends BaseMvpFragment {
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initView(View view, Bundle savedInstanceState) {
         mWebView = (WebView) view.findViewById(R.id.web_view);
     }
 
@@ -163,6 +161,8 @@ public class WebViewFragment extends BaseMvpFragment {
     public void showLoadingView() {
 
     }
+
+
 
     @Override
     public void showEmptyView(int imageId) {

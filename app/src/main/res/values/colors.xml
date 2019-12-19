@@ -6,7 +6,7 @@
     <!-- 主体文字,标题/标签 -->
     <color name="txt_black">#212121</color>
 
-    <color name="replaceable_color_navigation_bar_bg">@color/common_white</color>
+
 
     <color name="common_ColorPrimary">#3F51B5</color>
     <color name="common_ColorPrimaryDark">#303F9F</color>
@@ -68,6 +68,6 @@
     <!-- 辅助文字,提示 -->
     <color name="txt_light_gray">#CCCCCC</color>
 
-    <color name="replaceable_color_title">@color/common_white</color>
+
     <color name="news_tv_source_color">#a3a3a3</color>
 </resources>

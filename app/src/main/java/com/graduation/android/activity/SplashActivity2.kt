@@ -3,10 +3,9 @@ package com.graduation.android.activity
 import android.annotation.SuppressLint
 import android.os.Bundle
 import com.graduation.android.R
-import com.graduation.android.base.BaseActivity
-import com.graduation.android.base.BaseViewTest
-import com.graduation.android.base.IPresenter
-import kotlinx.android.synthetic.main.activity_splash.*
+import com.graduation.android.base.mvp.BaseActivity
+import com.graduation.android.base.mvp.BaseViewTest
+import com.graduation.android.base.mvp.IPresenter
 
 /**
  * 启动页

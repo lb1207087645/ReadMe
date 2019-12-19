@@ -1,10 +1,11 @@
 package com.graduation.android.mine;
 
 import android.app.Dialog;
+import android.os.Bundle;
 import android.view.View;
 
 import com.graduation.android.R;
-import com.graduation.android.base.BaseMvpFragment;
+import com.graduation.android.base.mvp.BaseMvpFragment;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.base.utils.L;
 import com.graduation.android.home.mvp.HomeContractTest;
@@ -39,12 +40,12 @@ public class MineFragment extends BaseMvpFragment implements PlatformActionListe
     }
 
     @Override
-    protected void loadData() {
+    public void loadData() {
 
     }
 
     @Override
-    protected void initView(View view) {
+    protected void initView(View view, Bundle savedInstanceState) {
         view.findViewById(R.id.tv_share).setOnClickListener(onClickListner);
 //
 //        srl = (SwipeRefreshLayout) view.findViewById(R.id.srl);

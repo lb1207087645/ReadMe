@@ -1,2 +1,2 @@
-include ':app', ':base', ':share'
-
+include ':app', 'libraries:base',
+        ':libraries:share'

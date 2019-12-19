@@ -1,11 +1,10 @@
 package com.graduation.android.news.mvp;
 
-import com.graduation.android.base.BaseViewTest;
-import com.graduation.android.base.IPresenter;
+import com.graduation.android.base.mvp.BaseViewTest;
+import com.graduation.android.base.mvp.IPresenter;
 import com.graduation.android.bean.NewsDetail;
 import com.graduation.android.entity.DesignRes;
 import com.graduation.android.model.FreshBean;
-import com.graduation.android.model.FreshNewsBean;
 
 import java.util.List;
 
