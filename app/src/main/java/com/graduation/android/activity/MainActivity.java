@@ -1,6 +1,10 @@
 package com.graduation.android.activity;
 
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -14,16 +18,20 @@ import com.graduation.android.R;
 import com.graduation.android.adapter.MainAdapter;
 import com.graduation.android.base.mvp.BaseActivity;
 import com.graduation.android.base.mvp.IPresenter;
+import com.graduation.android.base.utils.L;
+import com.graduation.android.base.utils.ToastUtils;
 import com.graduation.android.home.HomeFragment;
 import com.graduation.android.mine.MineFragment2;
 import com.graduation.android.news.NewsFragment;
 import com.graduation.android.test.Test1Fragment;
 import com.graduation.android.web.WebViewFragment;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.disposables.Disposable;
 
 
 /**
@@ -39,6 +47,8 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.main_viewpager)
     ViewPager mainViewPager;
 
+
+    private Disposable rxPermissionsDisposable;//权限dispose，防止内存泄漏
 
     /**
      * tab 页String
@@ -66,6 +76,10 @@ public class MainActivity extends BaseActivity {
     @Override
     public void loadData() {
         initTab();
+        //  requestOne();
+        requestMulti(Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        );
     }
 
 
@@ -216,5 +230,65 @@ public class MainActivity extends BaseActivity {
     @Override
     public void showTip(String message) {
 
+    }
+
+
+    /**
+     * 分别请求多个权限
+     */
+    @SuppressLint("CheckResult")
+    @TargetApi(Build.VERSION_CODES.M)
+    private void requestMulti(String... permissions) {
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions
+                .requestEach(permissions)
+                .subscribe(permission -> { // will emit 2 Permission objects
+
+                    //两个都请求完后会调用
+                    if (permission.name.equals(Manifest.permission.READ_PHONE_STATE)) {
+                        if (permission.granted) {
+                            L.d("granted", "READ_PHONE_STATE允许");
+                        } else {
+                            L.d("granted", "READ_PHONE_STATE拒绝");
+                        }
+                    }
+
+                    if (permission.name.equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                        if (permission.granted) {
+                            L.d("granted", "WRITE_EXTERNAL_STORAGE允许");
+                        } else {
+                            L.d("granted", "WRITE_EXTERNAL_STORAGE拒绝");
+                        }
+                    }
+
+
+                });
+
+    }
+
+
+    /**
+     * 单个权限申请,访问请求摄像机权限
+     */
+    private void requestOne() {
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissionsDisposable = rxPermissions.request(Manifest.permission.CAMERA).subscribe(granted -> {
+            if (granted) { // 用户允许
+                ToastUtils.showToast(this, "用户允许");
+                // I can control the camera now
+            } else {//用户拒绝,如果要强制申请权限，可以在这里执行提示用户去设置的弹窗
+                // Oups permission denied
+                ToastUtils.showToast(this, "用户拒绝");
+            }
+        });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (rxPermissionsDisposable != null && !rxPermissionsDisposable.isDisposed()) {
+            rxPermissionsDisposable.dispose();
+        }
     }
 }
