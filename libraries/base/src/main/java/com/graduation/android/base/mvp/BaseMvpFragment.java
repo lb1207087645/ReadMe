@@ -81,7 +81,7 @@ public abstract class BaseMvpFragment<P extends IPresenter<V>, V extends BaseVie
             mPresenter.attachView((V) this);//presenter与view连接
         }
         initView(rootView, savedInstanceState);
-
+        bindEventListener();
         // 该处代码用于配合CommonState处理使用，但是顺序必须要有保证，
         // 必须在initView方法之后，在loadData之前。
 
@@ -127,6 +127,15 @@ public abstract class BaseMvpFragment<P extends IPresenter<V>, V extends BaseVie
         super.onAttach(context);
         mActivity = getActivity();
     }
+
+
+    /**
+     * 事件监听的处理
+     */
+    protected void bindEventListener() {
+
+    }
+
 
     /**
      * 子类去初始化Presenter

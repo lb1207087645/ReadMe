@@ -11,9 +11,6 @@ import android.widget.TextView;
 import com.graduation.android.R;
 import com.graduation.android.adapter.NewsAdapter;
 import com.graduation.android.base.mvp.BaseFragment;
-import com.graduation.android.base.image.ImageLoadConfig;
-import com.graduation.android.base.network.ErrorEntity;
-import com.graduation.android.base.utils.L;
 import com.graduation.android.bean.NewsDetail;
 import com.graduation.android.entity.DesignRes;
 import com.graduation.android.model.FreshBean;
@@ -48,8 +45,6 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
 
     private static final String TAG = "NewsFragment";
 
-    private ImageLoadConfig appTopicTitleBuild;
-
 
     private SwipyRefreshLayout swipyRefreshLayout;
 
@@ -65,16 +60,19 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
 
     @Override
     public void loadData() {
+        mPresenter.getFreshNews(0);
+    }
+
+
+    @Override
+    protected void bindEventListener() {
         swipyRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {//简单下拉刷新
             @Override
             public void onRefresh(SwipyRefreshLayoutDirection direction) {
-                mPresenter.getFreshNews(0);
-
+                loadData();
             }
         });
-
     }
-
 
     @Override
     public void loadListSuccess(int page, List<DesignRes> datas) {
@@ -98,10 +96,7 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
     public void loadSimple(List<NewsDetail> list) {
         for (int i = 0; i < list.size(); i++) {
             Log.d("sddsd", list.get(i) + "");
-
         }
-
-
     }
 
     @Override
@@ -114,74 +109,11 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
 
 
     @Override
-    public boolean isActive() {
-        return isAdded();
-    }
-
-    @Override
-    public void showProgress() {
-//        srl.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                srl.setRefreshing(true);
-//            }
-//        });
-    }
-
-    @Override
-    public void dismissProgress() {
-//        srl.setRefreshing(false);
-    }
-
-    @Override
-    public void showTip(String message) {
-        showToast(message);
-    }
-
-    @Override
-    public void showLoadingDialog(String msg) {
-
-    }
-
-    @Override
-    public void hideLoadingDialog() {
-
-    }
-
-
-    @Override
-    public void showErr(ErrorEntity err) {
-        L.d(TAG, err.errMsg);
-
-
-    }
-
-    @Override
-    public void showErrorView() {
-
-    }
-
-    @Override
-    public void showErrorView(String errorType) {
-
-    }
-
-    @Override
-    public void showLoadingView() {
-
-    }
-
-    @Override
     protected void initView(View view, Bundle savedInstanceState) {
         tvHello = view.findViewById(R.id.tv_hello);
         mRecyclerView = view.findViewById(R.id.mRecyclerView);
         iv_image = view.findViewById(R.id.iv_image);
         swipyRefreshLayout = view.findViewById(R.id.refresh_layout);
-//
-        appTopicTitleBuild = new ImageLoadConfig.Builder()
-                .setPlaceHolderResId(R.drawable.recommend_item_app_topic_title_default)
-                .setErrorResId(R.drawable.recommend_item_app_topic_title_default)
-                .build();
 
 
 //
@@ -209,14 +141,34 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
 //        rv.setAdapter(adapter);
     }
 
+
     @Override
-    public void showEmptyView(int imageId) {
+    public boolean isActive() {
+        return false;
+    }
+
+    @Override
+    public void showProgress() {
 
     }
 
     @Override
-    public void showContentView() {
+    public void dismissProgress() {
 
     }
 
+    @Override
+    public void showTip(String message) {
+
+    }
+
+    @Override
+    public void showLoadingDialog(String msg) {
+
+    }
+
+    @Override
+    public void hideLoadingDialog() {
+
+    }
 }

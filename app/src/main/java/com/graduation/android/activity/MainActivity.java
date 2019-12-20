@@ -17,6 +17,7 @@ import com.graduation.android.base.mvp.IPresenter;
 import com.graduation.android.home.HomeFragment;
 import com.graduation.android.mine.MineFragment2;
 import com.graduation.android.news.NewsFragment;
+import com.graduation.android.test.Test1Fragment;
 import com.graduation.android.web.WebViewFragment;
 
 import java.util.ArrayList;
