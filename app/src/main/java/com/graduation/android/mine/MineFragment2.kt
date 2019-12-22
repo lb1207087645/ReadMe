@@ -7,7 +7,7 @@ import cn.sharesdk.framework.Platform
 import cn.sharesdk.framework.PlatformActionListener
 import com.graduation.android.R
 import com.graduation.android.base.mvp.BaseMvpFragment
-import com.graduation.android.base.mvp.BaseViewTest
+import com.graduation.android.base.mvp.BaseView
 import com.graduation.android.base.mvp.IPresenter
 import com.graduation.android.base.network.ErrorEntity
 import com.graduation.android.share.utils.DialogUtil
@@ -17,7 +17,7 @@ import java.util.HashMap
 /**
  * 我的页面，kotlin版
  */
-class MineFragment2 : BaseMvpFragment<IPresenter<BaseViewTest>, BaseViewTest>(),
+class MineFragment2 : BaseMvpFragment<IPresenter<BaseView>, BaseView>(),
     PlatformActionListener {
     override fun initView(view: View?, savedInstanceState: Bundle?) {
         var tvShare = view?.findViewById<TextView>(R.id.tv_share)

@@ -1,10 +1,6 @@
 package com.graduation.android.base.mvp;
 
 
-import android.app.Fragment;
-import android.os.Bundle;
-import android.view.View;
-
 import com.graduation.android.base.diff.BaseViewCallback;
 import com.graduation.android.base.diff.ModuleBaseDiffHelper;
 import com.graduation.android.base.network.ErrorEntity;
@@ -13,7 +9,7 @@ import com.graduation.android.base.network.ErrorEntity;
  * Fragment基类
  */
 
-public abstract class BaseFragment<P extends IPresenter<V>, V extends BaseViewTest> extends BaseMvpFragment<P, V> {
+public abstract class BaseFragment<P extends IPresenter<V>, V extends BaseView> extends BaseMvpFragment<P, V> {
 
 
     /**

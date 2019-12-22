@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * 构造出来的
  * desc: .
  * author: Will .
  * date: 2017/9/27 .
@@ -91,6 +92,17 @@ public class FreshBean implements Serializable {
         private String comment_status;
         private CustomFieldsBean custom_fields;
         private List<TagsBean> tags;
+
+
+        private String imgUrl;
+
+        public String getImgUrl() {
+            return imgUrl;
+        }
+
+        public void setImgUrl(String imgUrl) {
+            this.imgUrl = imgUrl;
+        }
 
         public int getId() {
             return id;

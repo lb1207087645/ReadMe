@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.graduation.android.base.utils.ToastUtils;
 import com.graduation.android.base.widget.state.CommonState;
 
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
@@ -23,7 +22,7 @@ import butterknife.Unbinder;
  * @param <P>
  * @param <V>
  */
-public abstract class BaseMvpFragment<P extends IPresenter<V>, V extends BaseViewTest> extends Fragment implements BaseViewTest, IFetchData {
+public abstract class BaseMvpFragment<P extends IPresenter<V>, V extends BaseView> extends Fragment implements BaseView, IFetchData {
 
     protected P mPresenter;//p层
 

@@ -53,6 +53,8 @@ public class MainApplication extends BaseApplication implements Application.Acti
         super.onCreate();
         // retrofit全局配置
         try {
+
+            boolean isShowLog = BuildConfig.LOG_DEBUG;
             RetrofitServiceManager retrofitServiceManager = RetrofitServiceManager.getInstance()
                     .addConverterFactory(GsonConverterFactory.create());
 //                    .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create());
@@ -75,8 +77,8 @@ public class MainApplication extends BaseApplication implements Application.Acti
 //                    .setCacheMaxSize(10 * 1024 * 1024)//缓存配置相关
 //                    .setCacheTime(30 * 24 * 60 * 60)// 缓存时间，默认-1表示永久缓存
 //                    .setCacheVersion(com.sinyee.babybus.core.util.AppUtil.getVersionCode(this))// 缓存版本，可以自行设置
-                    .setBaseUrl(BuildConfig.BASE_URL);//base url 设置
-//                    .setLog(true);//设置log
+                    .setBaseUrl(BuildConfig.BASE_URL)//base url 设置
+                    .setLog(isShowLog);//设置log,打印请求日志和返回日志
             // 捕获rx不处理的异常
             RxJavaPlugins.setErrorHandler(new Consumer<Throwable>() {
                 @Override

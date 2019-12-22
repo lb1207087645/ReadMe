@@ -100,6 +100,13 @@ public class HttpLoggingInterceptor implements Interceptor {
         return logForResponse(response, tookMs);
     }
 
+    /**
+     * 请求的日志拦截
+     *
+     * @param request
+     * @param connection
+     * @throws IOException
+     */
     private void logForRequest(Request request, Connection connection) throws IOException {
         L.i(tag, "-------------------------------request-------------------------------");
         boolean logBody = (level == Level.BODY);
@@ -110,11 +117,13 @@ public class HttpLoggingInterceptor implements Interceptor {
 
         try {
             String requestStartMessage = "--> " + request.method() + ' ' + URLDecoder.decode(request.url().url().toString(), UTF8.name()) + ' ' + protocol;
-            L.i(tag, requestStartMessage);
+            L.i(tag, requestStartMessage);//请求参数
 
             if (logHeaders) {
                 Headers headers = request.headers();
+
                 for (int i = 0, count = headers.size(); i < count; i++) {
+                  //  L.i(tag, "请求头部");
                     L.i(tag, "\t" + headers.name(i) + ": " + headers.value(i));
                 }
 
@@ -133,6 +142,12 @@ public class HttpLoggingInterceptor implements Interceptor {
         }
     }
 
+    /**
+     * 返回的日志拦截
+     * @param response
+     * @param tookMs
+     * @return
+     */
     private Response logForResponse(Response response, long tookMs) {
         L.i(tag, "-------------------------------response-------------------------------");
         Response.Builder builder = response.newBuilder();
@@ -147,6 +162,7 @@ public class HttpLoggingInterceptor implements Interceptor {
                 L.i(tag, " ");
                 Headers headers = clone.headers();
                 for (int i = 0, count = headers.size(); i < count; i++) {
+//                    L.i(tag, "响应头部");
                     L.i(tag, "\t" + headers.name(i) + ": " + headers.value(i));
                 }
                 L.i(tag, " ");

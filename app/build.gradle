@@ -20,9 +20,11 @@ android {
         debug {
             // 显示Log
             buildConfigField "boolean", "LOG_DEBUG", "true"
-            //   buildConfigField "String", "BASE_URL", "\"https://fy.iciba.com/\""
+            //    buildConfigField "String", "BASE_URL", "\"http://fy.iciba.com/\""
             //  buildConfigField "String", "BASE_URL", "\"http://api.iclient.ifeng.com/\""//凤凰网
-            buildConfigField "String", "BASE_URL", "\"http://i.jandan.net/\""//煎蛋网
+//            buildConfigField "String", "BASE_URL", "\"http://i.jandan.net/\""//煎蛋网
+            buildConfigField "String", "BASE_URL", "\"http://fanyi.youdao.com/\""//post测试
+
             buildConfigField "String", "BASE_CONFIG_URL", "\"http://test.api-base.babybus.co/\""
 
             minifyEnabled false

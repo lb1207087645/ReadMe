@@ -40,7 +40,7 @@ class HttpClient {
         builder.writeTimeout(DEFAULT_WRITE_TIME_OUT, TimeUnit.SECONDS);
         builder.connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS);
 //        builder.addInterceptor(new NetworkInterceptor());//添加网络拦截器
-      //  builder.addInterceptor(RetrofitConfig.sQueryParameterInterceptor);//添加公共参数
+       // builder.addInterceptor(RetrofitConfig.sQueryParameterInterceptor);//添加公共参数
     }
 
     public static HttpClient getInstance() {

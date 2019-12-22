@@ -15,15 +15,16 @@ import android.widget.Toast;
 
 import com.graduation.android.base.R;
 import com.graduation.android.base.network.ErrorEntity;
+import com.graduation.android.base.widget.state.CommonState;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
 /**
- * mvp 版的activity，使用模板方法设计模式
+ * mvp 版的activity
  */
-public abstract class BaseMvpActivity<P extends IPresenter, V extends BaseViewTest> extends AppCompatActivity implements BaseViewTest {
+public abstract class BaseMvpActivity<P extends IPresenter, V extends BaseView> extends AppCompatActivity implements BaseView {
 
 
     protected Context mActivity;
@@ -36,9 +37,8 @@ public abstract class BaseMvpActivity<P extends IPresenter, V extends BaseViewTe
     private View centerToolbarView;
     private View rightToolbarView;
 
-    private View centerTabLayoutToolbarView;
 
-//    protected CommonState mStateView;//loadSir 用法
+    protected CommonState mStateView;//loadSir 用法
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,11 +55,10 @@ public abstract class BaseMvpActivity<P extends IPresenter, V extends BaseViewTe
             mToolbar = findViewById(R.id.common_toolbar);
             if (setCustomToolbarLayout() <= 0) {
                 //使用默认的toolbar
-                mInflater.inflate(R.layout.common_include_toolbar,mToolbar);
+                mInflater.inflate(R.layout.common_include_toolbar, mToolbar);
                 leftToolbarView = mToolbar.findViewById(R.id.common_toolbar_tv_left);
                 centerToolbarView = mToolbar.findViewById(R.id.common_toolbar_tv_title);
                 rightToolbarView = mToolbar.findViewById(R.id.common_toolbar_tv_right);
-                centerTabLayoutToolbarView = mToolbar.findViewById(R.id.common_toolbar_tabLayout);
             } else {
                 //自定义toolbar
                 mInflater.inflate(setCustomToolbarLayout(), mToolbar);
@@ -89,26 +88,26 @@ public abstract class BaseMvpActivity<P extends IPresenter, V extends BaseViewTe
             getLifecycle().addObserver(mPresenter);//p 层与生命周期做关联
             mPresenter.attachView(this);//presenter与view连接
         }
-        if (mToolbar != null && setCustomToolbarLayout() <= 0) {
+        if (mToolbar != null && setCustomToolbarLayout() <= 0) {//默认toolbar
             initToolbar(savedInstanceState);
         }
         initProgressDialog(savedInstanceState);
         initWidget(savedInstanceState);
         bindEventListener();
 
-//        if (!isUseFragment()) {
-//            // 该处代码用于向Activity注册一个全局通用的状态UI，必须在initWidget之后，在loadData之前调用。
-//            if (setLoadingLayoutId() > 0) {
-//                View loadingView = findViewById(setLoadingLayoutId());
-//                if (loadingView != null) {
-//                    mStateView = new CommonState(loadingView);
-//                } else {
-//                    mStateView = new CommonState(container);
-//                }
-//            } else {
-//                mStateView = new CommonState(container);
-//            }
-//        }
+        if (!isUseFragment()) {
+            // 该处代码用于向Activity注册一个全局通用的状态UI，必须在initWidget之后，在loadData之前调用。
+            if (setLoadingLayoutId() > 0) {
+                View loadingView = findViewById(setLoadingLayoutId());
+                if (loadingView != null) {
+                    mStateView = new CommonState(loadingView);
+                } else {
+                    mStateView = new CommonState(container);
+                }
+            } else {
+                mStateView = new CommonState(container);
+            }
+        }
 
         loadData();
     }
@@ -183,12 +182,6 @@ public abstract class BaseMvpActivity<P extends IPresenter, V extends BaseViewTe
     protected abstract void initWidget(Bundle savedInstanceState);
 
     protected void initToolbar(Bundle savedInstanceState) {//对toolbar 做一些设置
-
-
-
-
-
-
 
 
     }
@@ -305,10 +298,6 @@ public abstract class BaseMvpActivity<P extends IPresenter, V extends BaseViewTe
 
     public View getToolbarRightView() {
         return rightToolbarView;
-    }
-
-    public View getCenterTabLayoutToolbarView() {
-        return centerTabLayoutToolbarView;
     }
 
 

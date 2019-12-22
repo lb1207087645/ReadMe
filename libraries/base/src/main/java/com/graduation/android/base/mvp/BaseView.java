@@ -22,7 +22,7 @@ import com.graduation.android.base.network.ErrorEntity;
 /**
  * View 层
  */
-public interface BaseViewTest {
+public interface BaseView {
 
 
     boolean isActive();

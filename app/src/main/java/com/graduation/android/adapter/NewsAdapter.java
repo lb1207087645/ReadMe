@@ -37,7 +37,7 @@ public class NewsAdapter extends BaseMultiItemQuickAdapter<FreshBean.PostsBean, 
         viewHolder.setText(R.id.tv_title, item.getTitle());
         //   viewHolder.setText(R.id.tv_info, item.getAuthor().getName());
         viewHolder.setText(R.id.tv_commnetsize, item.getComment_count() + "评论");
-        //   ImageLoaderManager.getInstance().loadImage(viewHolder.getView(R.id.iv_logo), item.getUrl(), build);
+        ImageLoaderManager.getInstance().loadImage(viewHolder.getView(R.id.iv_logo), item.getImgUrl(), build);
 
     }
 }

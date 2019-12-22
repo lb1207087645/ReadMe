@@ -23,9 +23,7 @@ public class NewsModel {
     }
 
 
-//    public Observable<BaseResponse<Translation3.content>> getAudioDetailInfo() {
-//        return modelService.getCall();
-//    }
+
 
 
     /**
@@ -52,8 +50,8 @@ public class NewsModel {
      * 请求接口
      */
     interface ModelService {
-        //        @GET("ajax.php?a=fy&f=auto&t=auto&w=hi%20world")
-//        Observable<BaseResponse<Translation3.content>> getCall();
+
+
         @GET("ClientNews")
         Observable<List<NewsDetail>> getNewsDetail(@Query("id") String id,
                                                    @Query("action") String action,

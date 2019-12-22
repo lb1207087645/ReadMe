@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.graduation.android.R;
-import com.graduation.android.base.mvp.BaseActivity;
+import com.graduation.android.base.BaseActivity;
 import com.graduation.android.base.mvp.IPresenter;
 import com.graduation.android.base.network.ErrorEntity;
 

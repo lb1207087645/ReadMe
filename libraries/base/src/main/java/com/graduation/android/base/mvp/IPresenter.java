@@ -5,12 +5,10 @@ import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
 
-import com.graduation.android.base.mvp.BaseViewTest;
-
 /**
  * IPresenter
  */
-public interface IPresenter<V extends BaseViewTest> extends LifecycleObserver {
+public interface IPresenter<V extends BaseView> extends LifecycleObserver {
 
     /**
      * presenter 与对应的View 进行绑定，方便p层调用View层

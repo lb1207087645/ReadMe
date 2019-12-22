@@ -3,15 +3,15 @@ package com.graduation.android.activity
 import android.annotation.SuppressLint
 import android.os.Bundle
 import com.graduation.android.R
-import com.graduation.android.base.mvp.BaseActivity
-import com.graduation.android.base.mvp.BaseViewTest
+import com.graduation.android.base.BaseActivity
+import com.graduation.android.base.mvp.BaseView
 import com.graduation.android.base.mvp.IPresenter
 
 /**
  * 启动页
  */
 @SuppressLint("Registered")
-class SplashActivity2 : BaseActivity<IPresenter<BaseViewTest>, BaseViewTest>() {
+class SplashActivity2 : BaseActivity<IPresenter<BaseView>, BaseView>() {
 
 
     override fun initPresenter() = null

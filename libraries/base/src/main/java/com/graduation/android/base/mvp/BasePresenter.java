@@ -27,7 +27,7 @@ import io.reactivex.Observable;
  *
  * @param <V>
  */
-public class BasePresenterTest<V extends BaseViewTest> implements IPresenter<V> {
+public class BasePresenter<V extends BaseView> implements IPresenter<V> {
 
     private WeakReference<V> mView;//view改成弱引用
     private final List<IDisposableRelease> mObserver = new ArrayList<>();

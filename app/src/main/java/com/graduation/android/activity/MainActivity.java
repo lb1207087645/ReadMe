@@ -16,14 +16,13 @@ import android.widget.TextView;
 
 import com.graduation.android.R;
 import com.graduation.android.adapter.MainAdapter;
-import com.graduation.android.base.mvp.BaseActivity;
+import com.graduation.android.base.BaseActivity;
 import com.graduation.android.base.mvp.IPresenter;
 import com.graduation.android.base.utils.L;
 import com.graduation.android.base.utils.ToastUtils;
 import com.graduation.android.home.HomeFragment;
 import com.graduation.android.mine.MineFragment2;
 import com.graduation.android.news.NewsFragment;
-import com.graduation.android.test.Test1Fragment;
 import com.graduation.android.web.WebViewFragment;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -70,7 +69,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initWidget(Bundle savedInstanceState) {
-
+      TextView  tv_title = (TextView) getToolbarTitleView();
+        tv_title.setText("haiai");
     }
 
     @Override
@@ -214,7 +214,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected boolean isUseToolbar() {
-        return false;
+        return true;
     }
 
     @Override

@@ -9,8 +9,10 @@ import com.graduation.android.R;
 import com.graduation.android.base.mvp.BaseMvpFragment;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.base.utils.L;
+import com.graduation.android.bean.Translation1;
 import com.graduation.android.entity.DesignRes;
-import com.graduation.android.home.mvp.HomeContractTest;
+import com.graduation.android.home.mvp.HomeContract;
+import com.graduation.android.home.mvp.HomePresenter;
 
 import java.util.List;
 
@@ -18,14 +20,7 @@ import java.util.List;
 /**
  * 测试的HomeFragment
  */
-public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, HomeContractTest.View> implements HomeContractTest.View {
-//
-//    private SwipeRefreshLayout srl;
-//    private RecyclerView rv;
-//
-//    private int curPage = 1;
-//    private ArrayList<DesignRes> datas = new ArrayList<>();
-//    private LoadMoreAdapter adapter;
+public class HomeFragment extends BaseMvpFragment<HomeContract.Presenter, HomeContract.View> implements HomeContract.View {
 
 
     private TextView tvHello;
@@ -33,9 +28,9 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
     private static final String TAG = "HomeFragment";
 
     @Override
-    protected HomeContractTest.Presenter initPresenter() {
-       // return new HomePresenterTest(mActivity);
-         return null;
+    protected HomeContract.Presenter initPresenter() {
+        return new HomePresenter(mActivity);
+        // return null;
     }
 
     @Override
@@ -45,56 +40,24 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 
     @Override
     public void loadData() {
-      //  mPresenter.getCall();//加载请求
+//        mPresenter.getCallGet();
+        mPresenter.getCallPost();
     }
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         tvHello = view.findViewById(R.id.tv_hello);
-//
-//        srl = (SwipeRefreshLayout) view.findViewById(R.id.srl);
-//        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                mPresenter.pullToLoadList();
-//            }
-//        });
-//
-//        rv = (RecyclerView) view.findViewById(R.id.rv);
-//        rv.addItemDecoration(new GridSpacingDecorator(DensityUtils.dp2px(mActivity, 8)));
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity, 2);
-//        rv.setLayoutManager(gridLayoutManager);
-//
-//        adapter = new LoadMoreAdapter(rv,
-//                new DesignResAdapter(mActivity, datas),
-//                new LoadMoreAdapter.OnLoadMoreListener() {//加载更多
-//                    @Override
-//                    public void onLoadMore() {
-//                        mPresenter.loadList(curPage + 1);
-//                    }
-//                });
-//        rv.setAdapter(adapter);
-
     }
 
 
     @Override
-    public void loadListSuccess(int page, List<DesignRes> datas) {
-//        curPage = page;
-//        if (curPage == 1) {
-//            this.datas.clear();
-//        }
-//        this.datas.addAll(datas);
-//
-//        // 设置是否已加载完全部数据状态
-//        adapter.setStatus(datas.size() == CommonConstants.COUNT_OF_PAGE
-//                ? LoadMoreAdapter.STATUS_HAVE_MORE : LoadMoreAdapter.STATUS_LOADED_ALL);
-//        adapter.notifyDataSetChanged();
+    public void loadCallGet(String value) {
+//        tvHello.setText(out);
     }
 
     @Override
-    public void loadSimple(String out) {
-        tvHello.setText(out);
+    public void loadCallPost(String value) {
+        tvHello.setText(value);
     }
 
 
@@ -105,17 +68,12 @@ public class HomeFragment extends BaseMvpFragment<HomeContractTest.Presenter, Ho
 
     @Override
     public void showProgress() {
-//        srl.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                srl.setRefreshing(true);
-//            }
-//        });
+
     }
 
     @Override
     public void dismissProgress() {
-//        srl.setRefreshing(false);
+
     }
 
     @Override

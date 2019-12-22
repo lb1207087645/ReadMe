@@ -1,4 +1,4 @@
-package com.graduation.android.base.mvp;
+package com.graduation.android.base;
 
 
 import android.graphics.Typeface;
@@ -9,9 +9,10 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.graduation.android.base.R;
-import com.graduation.android.base.CommonApplication;
-import com.graduation.android.base.R;
+
+import com.graduation.android.base.mvp.BaseMvpActivity;
+import com.graduation.android.base.mvp.BaseView;
+import com.graduation.android.base.mvp.IPresenter;
 import com.graduation.android.base.utils.StatusBarUtil;
 import com.graduation.android.base.utils.ToolbarUtil;
 
@@ -19,14 +20,14 @@ import com.graduation.android.base.utils.ToolbarUtil;
 /**
  * Activity基类的实现
  */
-public abstract class BaseActivity<P extends IPresenter<V>, V extends BaseViewTest> extends BaseMvpActivity<P, V> {
+public abstract class BaseActivity<P extends IPresenter<V>, V extends BaseView> extends BaseMvpActivity<P, V> {
 
 
     /**
      * 蓝光遮罩view
      */
-    private int statusBarHeight;
-    private int screenHeight;
+//    private int statusBarHeight;
+//    private int screenHeight;
 
 
     @Override
@@ -35,6 +36,11 @@ public abstract class BaseActivity<P extends IPresenter<V>, V extends BaseViewTe
         StatusBarUtil.setStatusBarColor(this, ContextCompat.getColor(this, R.color.replaceable_color_navigation_bar_bg));
     }
 
+    /**
+     * toolbar样式，可在此修改
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void initToolbar(Bundle savedInstanceState) {
         mToolbar.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, getResources().getDimensionPixelSize(R.dimen.common_title_bar_size)));
@@ -59,7 +65,6 @@ public abstract class BaseActivity<P extends IPresenter<V>, V extends BaseViewTe
         //适配状态栏
         ToolbarUtil.setToolbar(mToolbar);
         setSupportActionBar(mToolbar);
-
 
 
     }

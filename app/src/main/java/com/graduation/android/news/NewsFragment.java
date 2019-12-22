@@ -14,8 +14,8 @@ import com.graduation.android.base.mvp.BaseFragment;
 import com.graduation.android.bean.NewsDetail;
 import com.graduation.android.entity.DesignRes;
 import com.graduation.android.model.FreshBean;
-import com.graduation.android.news.mvp.NewsContractTest;
-import com.graduation.android.news.mvp.NewsPresenterTest;
+import com.graduation.android.news.mvp.NewsContract;
+import com.graduation.android.news.mvp.NewsPresenter;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 
@@ -25,22 +25,11 @@ import java.util.List;
 /**
  * 新闻的NewsFragment
  */
-public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsContractTest.View> implements NewsContractTest.View {
-//
-//    private SwipeRefreshLayout srl;
-//    private RecyclerView rv;
-//
-//    private int curPage = 1;
-//    private ArrayList<DesignRes> datas = new ArrayList<>();
-//    private LoadMoreAdapter adapter;
-
-
-    private TextView tvHello;
+public class NewsFragment extends BaseFragment<NewsContract.Presenter, NewsContract.View> implements NewsContract.View {
 
 
     ImageView iv_image;//图片显示
 
-    //    @BindView(R.id.mRecyclerView)
     RecyclerView mRecyclerView;
 
     private static final String TAG = "NewsFragment";
@@ -49,8 +38,8 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
     private SwipyRefreshLayout swipyRefreshLayout;
 
     @Override
-    protected NewsContractTest.Presenter initPresenter() {
-        return new NewsPresenterTest(mActivity);
+    protected NewsContract.Presenter initPresenter() {
+        return new NewsPresenter(mActivity);
     }
 
     @Override
@@ -61,6 +50,7 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
     @Override
     public void loadData() {
         mPresenter.getFreshNews(0);
+     //   mPresenter.getNewsData("SYLB10,SYDT10", "down", 2);
     }
 
 
@@ -74,30 +64,6 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
         });
     }
 
-    @Override
-    public void loadListSuccess(int page, List<DesignRes> datas) {
-//        curPage = page;
-//        if (curPage == 1) {
-//            this.datas.clear();
-//        }
-//        this.datas.addAll(datas);
-//
-//        // 设置是否已加载完全部数据状态
-//        adapter.setStatus(datas.size() == CommonConstants.COUNT_OF_PAGE
-//                ? LoadMoreAdapter.STATUS_HAVE_MORE : LoadMoreAdapter.STATUS_LOADED_ALL);
-//        adapter.notifyDataSetChanged();
-
-        // iv_image.
-
-
-    }
-
-    @Override
-    public void loadSimple(List<NewsDetail> list) {
-        for (int i = 0; i < list.size(); i++) {
-            Log.d("sddsd", list.get(i) + "");
-        }
-    }
 
     @Override
     public void loadFreshNews(List<FreshBean.PostsBean> postsBean) {
@@ -107,38 +73,18 @@ public class NewsFragment extends BaseFragment<NewsContractTest.Presenter, NewsC
         mRecyclerView.setAdapter(newsAdapter);
     }
 
+    @Override
+    public void loadNewsData(List<NewsDetail> itemBeanList) {
+
+
+    }
+
 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
-        tvHello = view.findViewById(R.id.tv_hello);
         mRecyclerView = view.findViewById(R.id.mRecyclerView);
         iv_image = view.findViewById(R.id.iv_image);
         swipyRefreshLayout = view.findViewById(R.id.refresh_layout);
-
-
-//
-//        srl = (SwipeRefreshLayout) view.findViewById(R.id.srl);
-//        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                mPresenter.pullToLoadList();
-//            }
-//        });
-//
-//        rv = (RecyclerView) view.findViewById(R.id.rv);
-//        rv.addItemDecoration(new GridSpacingDecorator(DensityUtils.dp2px(mActivity, 8)));
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity, 2);
-//        rv.setLayoutManager(gridLayoutManager);
-//
-//        adapter = new LoadMoreAdapter(rv,
-//                new DesignResAdapter(mActivity, datas),
-//                new LoadMoreAdapter.OnLoadMoreListener() {//加载更多
-//                    @Override
-//                    public void onLoadMore() {
-//                        mPresenter.loadList(curPage + 1);
-//                    }
-//                });
-//        rv.setAdapter(adapter);
     }
 
 

@@ -100,6 +100,7 @@ public class RetrofitServiceManager {
         if (isShowLog) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor("http");
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//            LargeHttpLoggingInterceptor loggingInterceptor = new LargeHttpLoggingInterceptor();
             addNetworkInterceptor(loggingInterceptor);
         }
         return this;
@@ -272,7 +273,9 @@ public class RetrofitServiceManager {
      */
     public <T> T create(Class<T> service, OkHttpClient client) {
         validateServiceInterface(service);
-//        addInterceptor(new NetworkInterceptor());
+        // addInterceptor(new NetworkInterceptor());
+        addInterceptor(RetrofitConfig.headerInterceptor);
+//        addInterceptor(RetrofitConfig.sQueryParameterInterceptor);
         return getGlobalRetrofit(client).create(service);
     }
 

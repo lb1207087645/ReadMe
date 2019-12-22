@@ -1,6 +1,5 @@
 package com.graduation.android.test;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,9 +8,7 @@ import com.graduation.android.base.mvp.BaseMvpFragment;
 import com.graduation.android.base.network.ErrorEntity;
 import com.graduation.android.base.utils.L;
 import com.graduation.android.base.widget.state.CommonState;
-import com.graduation.android.home.mvp.HomeContractTest;
-import com.graduation.android.share.utils.DialogUtil;
-import com.graduation.android.share.utils.ShareSdkUtils;
+import com.graduation.android.home.mvp.HomeContract;
 
 import java.util.HashMap;
 
@@ -29,7 +26,7 @@ public class Test1Fragment extends BaseMvpFragment implements PlatformActionList
 
 
     @Override
-    protected HomeContractTest.Presenter initPresenter() {
+    protected HomeContract.Presenter initPresenter() {
         return null;
         // return null;
     }
