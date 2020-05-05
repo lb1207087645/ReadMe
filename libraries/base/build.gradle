@@ -71,6 +71,6 @@ dependencies {
 //    api 'com.github.orangegangsters:swipy:1.1.0@aar'
 
     api 'com.github.orangegangsters:swipy:1.2.3@aar'
-
+    api 'org.greenrobot:eventbus:3.1.1'
 
 }

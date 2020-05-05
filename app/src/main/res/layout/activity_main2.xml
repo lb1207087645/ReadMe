@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
 
-    <com.graduation.android.base.widget.NoScrollHorizontalViewPager
+    <com.graduation.android.readme.base.widget.NoScrollHorizontalViewPager
         android:id="@+id/main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

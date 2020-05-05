@@ -67,7 +67,13 @@
     <color name="replaceable_color_home_text_selected">@color/common_gray_99</color>
     <!-- 辅助文字,提示 -->
     <color name="txt_light_gray">#CCCCCC</color>
-
+    <color name="tab_unselect">#c9c9c9</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#f6f6f6</color>
+    <color name="red">#e94737</color>
+    <color name="gray_two">#787878</color>
+    <color name="transparent">#00000000</color>
 
     <color name="news_tv_source_color">#a3a3a3</color>
 </resources>
