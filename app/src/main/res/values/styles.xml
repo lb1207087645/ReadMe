@@ -82,5 +82,38 @@
         <item name="android:layout_height">0.6dp</item>
         <item name="android:background">@color/common_gray_63</item>
     </style>
+    <style name="setting_rel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:background">@color/common_white</item>
+        <item name="android:paddingLeft">@dimen/common_dp_10</item>
+        <item name="android:paddingRight">@dimen/common_dp_10</item>
+        <item name="layout_constraintLeft_toLeftOf">parent</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+    </style>
+    <!--    水平分割线-->
+    <style name="horizontal_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:background">#FFF0F0F0</item>
+    </style>
+
+    <style name="setting_text_size">
+        <item name="android:textColor">@color/common_gray_33</item>
+        <item name="android:textSize">@dimen/common_sp_15</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">5.5dp</item>
+
+    </style>
+    <style name="setting_img">
+        <item name="android:layout_width">8dp</item>
+        <item name="android:layout_height">15dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:src">@mipmap/icon_dir</item>
+    </style>
 
 </resources>

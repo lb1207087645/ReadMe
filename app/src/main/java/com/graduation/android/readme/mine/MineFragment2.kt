@@ -14,8 +14,10 @@ import com.graduation.android.readme.base.mvp.BaseView
 import com.graduation.android.readme.base.mvp.IPresenter
 import com.graduation.android.readme.base.network.ErrorEntity
 import com.graduation.android.readme.login.LoginActivity
+import com.graduation.android.readme.setting.SettingActivity
 import com.graduation.android.share.utils.DialogUtil
 import com.graduation.android.share.utils.ShareSdkUtils
+import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
@@ -28,13 +30,18 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseView>, BaseView>(),
     PlatformActionListener, View.OnClickListener {
     private var tv_user_name_login: TextView? = null
 
+
+    private var tv_setting: TextView? = null
     override fun initView(view: View?, savedInstanceState: Bundle?) {
+        EventBus.getDefault().register(this)
         var tvShare = view?.findViewById<TextView>(R.id.tv_share)
+
+        tv_setting = view?.findViewById<TextView>(R.id.tv_setting)
 
         tv_user_name_login = view?.findViewById<TextView>(R.id.tv_user_name_login)
         var tvLogin = view?.findViewById<TextView>(R.id.tv_user_name_login)
         tvLogin?.setOnClickListener(this)
-
+        tv_setting?.setOnClickListener(this)
         tvShare?.setOnClickListener {
 
             try {
@@ -187,13 +194,23 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseView>, BaseView>(),
                     startActivity(intent)
                 }
             }
+
+            R.id.tv_setting -> {//设置页
+                if (BmobUser.isLogin()) {//已登录
+                    val intent = Intent(activity, SettingActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val intent = Intent(activity, LoginActivity::class.java)
+                    startActivity(intent)
+                }
+            }
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: AppEventType) {
         when (event.type) {
-            AppEventType.LOGIN_SUCCESS -> getUser()
+            AppEventType.LOGIN_SUCCESS, AppEventType.LOGIN_OUT -> getUser()
         }
     }
 
@@ -209,6 +226,11 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseView>, BaseView>(),
 
     override fun isActive(): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 
 

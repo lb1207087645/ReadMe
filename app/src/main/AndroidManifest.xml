@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.graduation.android.readme">
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <!--bomb -->
@@ -26,20 +27,26 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:launchMode="singleTask"
             android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:launchMode="singleTask"
             android:name=".login.LoginActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
         <activity
-            android:launchMode="singleTask"
             android:name=".login.RegisterActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".setting.SettingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
@@ -53,8 +60,7 @@
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.graduation.android.readme.BmobContentProvider">
-        </provider>
+            android:authorities="com.graduation.android.readme.BmobContentProvider"></provider>
     </application>
 
 </manifest>
