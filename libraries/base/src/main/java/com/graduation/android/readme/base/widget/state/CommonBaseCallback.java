@@ -14,9 +14,6 @@ import com.graduation.android.readme.base.widget.state.loadsir.callback.Callback
  * 状态UI使用的基础Callback封装，统一处理了图片动画的start与stop。
  *
  * @date：2017/10/11
- * @author：chenqq
- * @company: www.babybus.com
- * @email: ym_qqchen@sina.com
  */
 
 public abstract class CommonBaseCallback extends Callback {

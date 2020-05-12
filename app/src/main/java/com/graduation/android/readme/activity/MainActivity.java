@@ -21,7 +21,7 @@ import com.graduation.android.readme.base.mvp.IPresenter;
 import com.graduation.android.readme.base.utils.L;
 import com.graduation.android.readme.base.utils.ToastUtils;
 import com.graduation.android.readme.basemodule.BaseActivity;
-import com.graduation.android.readme.home.HomeFragment;
+import com.graduation.android.readme.home.NewsMainFragment;
 import com.graduation.android.readme.mine.MineFragment2;
 import com.graduation.android.readme.news.NewsFragment;
 import com.graduation.android.readme.web.WebViewFragment;
@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
     /**
      * tab 页String
      */
-    private String[] tabStrArray = {"首页", "新闻", "商城", "我的"};
+    private String[] tabStrArray = {"头条", "新闻", "商城", "我的"};
 
     private MainAdapter vpAdapter;
 
@@ -70,8 +70,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initWidget(Bundle savedInstanceState) {
-      TextView  tv_title = (TextView) getToolbarTitleView();
-        tv_title.setText("haiai");
+
     }
 
     @Override
@@ -89,7 +88,7 @@ public class MainActivity extends BaseActivity {
      */
     private void initTab() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new HomeFragment());
+        fragments.add(new NewsMainFragment());
         fragments.add(new NewsFragment());
         fragments.add(new WebViewFragment());//商城
         fragments.add(new MineFragment2());//我的
@@ -215,7 +214,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected boolean isUseToolbar() {
-        return true;
+        return false;
     }
 
     @Override

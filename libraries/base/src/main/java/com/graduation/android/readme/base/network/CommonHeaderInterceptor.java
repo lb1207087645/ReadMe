@@ -13,9 +13,6 @@ import okhttp3.Response;
 
 /**
  * desc: 请求头里添加公共参数拦截器
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
  */
 @SuppressWarnings("unused")
 public class CommonHeaderInterceptor implements Interceptor {

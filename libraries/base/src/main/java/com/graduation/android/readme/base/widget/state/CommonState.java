@@ -40,8 +40,6 @@ import java.util.List;
  *
  * @date：2017/10/10
  * @author：chenqq
- * @company: www.babybus.com
- * @email: ym_qqchen@sina.com
  */
 
 public final class CommonState {

@@ -2,20 +2,24 @@ package com.graduation.android.readme.home.mvp;
 
 import com.graduation.android.readme.base.mvp.BaseView;
 import com.graduation.android.readme.base.mvp.IPresenter;
+import com.graduation.android.readme.bean.NewsChannelTable;
 import com.graduation.android.readme.bean.Translation1;
 
-public interface HomeContract {
+import java.util.List;
+
+/**
+ * 新闻首页
+ */
+public interface NewsMainContract {
 
     interface View extends BaseView {
-        void loadCallGet(String value);
 
-        void loadCallPost(String value);
+        void returnMineNewsChannels(List<NewsChannelTable> newsChannelsMine);
     }
 
     interface Presenter extends IPresenter<View> {
-        void getCallGet();//
 
-        void getCallPost();
+        void getChannelsRequest();//获取渠道
 
     }
 }

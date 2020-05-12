@@ -8,7 +8,7 @@ import com.graduation.android.readme.R;
 import com.graduation.android.readme.base.mvp.BaseMvpFragment;
 import com.graduation.android.readme.base.network.ErrorEntity;
 import com.graduation.android.readme.base.utils.L;
-import com.graduation.android.readme.home.mvp.HomeContract;
+import com.graduation.android.readme.home.mvp.NewsMainContract;
 import com.graduation.android.share.utils.DialogUtil;
 import com.graduation.android.share.utils.ShareSdkUtils;
 
@@ -29,7 +29,7 @@ public class MineFragment extends BaseMvpFragment implements PlatformActionListe
     private ShareSdkUtils mShareUtils;
 
     @Override
-    protected HomeContract.Presenter initPresenter() {
+    protected NewsMainContract.Presenter initPresenter() {
         return null;
         // return null;
     }

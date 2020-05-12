@@ -10,12 +10,12 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public class HomeModel {
+public class NewsMainModel {
 
 
     private ModelService modelService;
 
-    public HomeModel() {
+    public NewsMainModel() {
         modelService = RetrofitServiceManager.getInstance().create(ModelService.class);
     }
 
