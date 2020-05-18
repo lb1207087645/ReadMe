@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">读</string>
     <string name="news_commentsize">%1$s评论</string>
+    <string name="photo_collections">图集：%1$s</string>
+    <!-- 共享过度动画 -->
+    <string name="transition_photos">transition_animation_news_photos</string>
 </resources>

@@ -32,70 +32,14 @@ import io.reactivex.Observable;
 public class NewsMainPresenter extends BasePresenter<NewsMainContract.View> implements NewsMainContract.Presenter {
 
 
-//    private Activity mActivity;
-
-
-//    @Override
-//    public void getCallPost() {
-//        subscribe(model.getCallPost("I hate you"), new BaseObserver<Translation1>() {
-//            @Override
-//            public void onError(ErrorEntity err) {
-//                getView().showErr(err);
-//                getView().loadCallGet(null);
-//            }
-//
-//            @Override
-//            public void onAfter() {
-//
-//            }
-//
-//            @Override
-//            public void onData(Translation1 translation1) {
-//                getView().loadCallPost(translation1.getTranslateResult().get(0).get(0).getTgt());
-//            }
-//
-//
-//        });
-//
-//    }
-
-
     private NewsMainModel model;
     private NewsMainPresenter mNewMainPresenter;
 
     public NewsMainPresenter(Activity activity) {
-//        mActivity = activity;
         mNewMainPresenter = this;
-
         model = new NewsMainModel();
     }
 
-
-//    /**
-//     * 简单文本回调,get 请求示例
-//     */
-//    @Override
-//    public void getCallGet() {
-//        subscribe(model.getCallGet(), new BaseObserverGet<Translation3.content>() {
-//            @Override
-//            public void onError(ErrorEntity err) {
-//                getView().showErr(err);
-//                getView().loadCallGet(null);
-//            }
-//
-//            @Override
-//            public void onAfter() {
-//
-//            }
-//
-//
-//            @Override
-//            public void onData(BaseResponse<Translation3.content> baseResponse) {
-//                getView().loadCallGet(baseResponse.data.out);
-//            }
-//        });
-////
-//    }
 
     /**
      * TODO 改成异步加载

@@ -74,6 +74,6 @@
     <color name="red">#e94737</color>
     <color name="gray_two">#787878</color>
     <color name="transparent">#00000000</color>
-
+    <color name="gray_deep">#c9000000</color>
     <color name="news_tv_source_color">#a3a3a3</color>
 </resources>

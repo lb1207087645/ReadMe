@@ -55,6 +55,11 @@ public class Transformer {
         };
     }
 
+
+
+
+
+
 //    public static <T> ObservableTransformer<T, T> switchCache(Type type) {
 //        return switchCache(CacheClient.getInstance().getCacheMode(), type);
 //    }
