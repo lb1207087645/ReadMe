@@ -83,7 +83,7 @@ public class NewsFragment extends BaseFragment<NewsListContract.Presenter, NewsL
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.getNewsListDataRequest(mNewsType, mNewsId, mStartPage);
+     //   mPresenter.getNewsListDataRequest(mNewsType, mNewsId, mStartPage);
     }
 
     @Override

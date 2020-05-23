@@ -13,7 +13,9 @@ import com.graduation.android.readme.base.mvp.BaseMvpFragment
 import com.graduation.android.readme.base.mvp.BaseView
 import com.graduation.android.readme.base.mvp.IPresenter
 import com.graduation.android.readme.base.network.ErrorEntity
+import com.graduation.android.readme.bean.User
 import com.graduation.android.readme.login.LoginActivity
+import com.graduation.android.readme.setting.PersonInfoActivity
 import com.graduation.android.readme.setting.SettingActivity
 import com.graduation.android.share.utils.DialogUtil
 import com.graduation.android.share.utils.ShareSdkUtils
@@ -21,7 +23,7 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.*
-
+import kotlinx.android.synthetic.main.frag_mine.*
 
 /**
  * 我的页面，kotlin版
@@ -32,6 +34,9 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseView>, BaseView>(),
 
 
     private var tv_setting: TextView? = null
+
+
+    private var tv_personal_file: TextView? = null
     override fun initView(view: View?, savedInstanceState: Bundle?) {
         EventBus.getDefault().register(this)
         var tvShare = view?.findViewById<TextView>(R.id.tv_share)
@@ -42,6 +47,9 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseView>, BaseView>(),
         var tvLogin = view?.findViewById<TextView>(R.id.tv_user_name_login)
         tvLogin?.setOnClickListener(this)
         tv_setting?.setOnClickListener(this)
+
+        tv_personal_file = view?.findViewById<TextView>(R.id.tv_personal_file)
+        tv_personal_file?.setOnClickListener(this)
         tvShare?.setOnClickListener {
 
             try {
@@ -204,20 +212,23 @@ class MineFragment2 : BaseMvpFragment<IPresenter<BaseView>, BaseView>(),
                     startActivity(intent)
                 }
             }
+            R.id.tv_personal_file -> {//个人资料
+                startActivity(Intent(mActivity, PersonInfoActivity::class.java))
+            }
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: AppEventType) {
         when (event.type) {
-            AppEventType.LOGIN_SUCCESS, AppEventType.LOGIN_OUT -> getUser()
+            AppEventType.LOGIN_SUCCESS, AppEventType.LOGIN_OUT,AppEventType.UPDATE_INFO -> getUser()
         }
     }
 
     fun getUser() {
         if (BmobUser.isLogin()) {//已登录
-            val user: BmobUser = BmobUser.getCurrentUser(BmobUser::class.java)//获取当前用户信息
-            tv_user_name_login?.text = user.username
+            val user: User = BmobUser.getCurrentUser(User::class.java)//获取当前用户信息
+            tv_user_name_login?.text = user.nickname
         } else {
             tv_user_name_login?.text = "注册/登录"
         }

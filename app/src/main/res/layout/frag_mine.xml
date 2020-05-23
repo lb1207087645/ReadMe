@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10.5dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="50dp"
         android:clickable="false"
         android:ellipsize="end"
         android:gravity="center|start"
@@ -21,6 +21,7 @@
 
 
     <TextView
+
         android:id="@+id/tv_personal_file"
         style="@style/setting_style"
         android:text="个人资料" />

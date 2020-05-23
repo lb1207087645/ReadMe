@@ -16,6 +16,8 @@ import com.graduation.android.readme.base.adapter.BaseViewHolder;
 import com.graduation.android.readme.base.image.ImageLoadConfig;
 import com.graduation.android.readme.base.image.ImageLoaderManager;
 import com.graduation.android.readme.base.utils.DensityUtil;
+import com.graduation.android.readme.home.NewsDetailActivity;
+import com.graduation.android.readme.home.NewsPhotoDetailActivity;
 import com.graduation.android.readme.home.bean.NewSummaryModel;
 import com.graduation.android.readme.home.bean.NewsPhotoDetail;
 import com.graduation.android.readme.home.bean.NewsSummary;
@@ -79,7 +81,7 @@ public class NewListAdapter extends BaseMultiItemQuickAdapter<NewSummaryModel, B
         holder.setOnClickListener(R.id.rl_root, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //   NewsDetailActivity.startAction(mContext, holder.getView(R.id.news_summary_photo_iv), newsSummary.getPostid(), newsSummary.getImgsrc());
+                NewsDetailActivity.startAction(mContext, holder.getView(R.id.news_summary_photo_iv), newsSummary.getPostid(), newsSummary.getImgsrc());
             }
         });
     }
@@ -99,7 +101,7 @@ public class NewListAdapter extends BaseMultiItemQuickAdapter<NewSummaryModel, B
         holder.setOnClickListener(R.id.ll_root, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //NewsPhotoDetailActivity.startAction(mContext, getPhotoDetail(newsSummary));
+                NewsPhotoDetailActivity.startAction(mContext, getPhotoDetail(newsSummary));
             }
         });
     }

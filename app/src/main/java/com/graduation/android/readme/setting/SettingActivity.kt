@@ -1,7 +1,9 @@
 package com.graduation.android.readme.setting
+
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
+import android.widget.RelativeLayout
 import android.widget.TextView
 import cn.bmob.v3.BmobUser
 import com.graduation.android.readme.R
@@ -9,7 +11,10 @@ import com.graduation.android.readme.base.eventbus.AppEventType
 import com.graduation.android.readme.base.mvp.BaseView
 import com.graduation.android.readme.base.mvp.IPresenter
 import com.graduation.android.readme.basemodule.BaseActivity
+import com.graduation.android.readme.utils.CacheUtils
 import org.greenrobot.eventbus.EventBus
+
+import kotlinx.android.synthetic.main.activity_setting.*
 
 class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnClickListener {
 
@@ -17,25 +22,37 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
     private var tvRight: TextView? = null
 
 
+    private var rlClearCache: RelativeLayout? = null
 
+
+    private var rlModifyPwd: RelativeLayout? = null
+
+    private var rlAccountInfo: RelativeLayout? = null
     private var tv_user_name_login_out: TextView? = null
-    private var edtFeedback: EditText? = null
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.btn_logout -> {
+            R.id.btn_logout -> {//退出登录
                 BmobUser.logOut();
                 EventBus.getDefault().post(AppEventType(AppEventType.LOGIN_OUT))
                 finish()
             }
+            R.id.rl_clear_cache -> {//清理缓存
+                CacheUtils.clearAllCache(this@SettingActivity)
+            }
+
+
+            R.id.rl_modify_pwd -> {//修改密码
+                startActivity(Intent(mActivity, ModifyPwdActivity::class.java))
+            }
+
+
         }
     }
 
 
     override fun bindEventListener() {
         tvRight?.setOnClickListener(this)
-
-
-
+        rl_clear_cache?.setOnClickListener(this)
     }
 
 
@@ -46,6 +63,14 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
         tvRight!!.setText("")
         tv_user_name_login_out = findViewById<TextView>(R.id.btn_logout)
         tv_user_name_login_out?.setOnClickListener(this)
+        rlClearCache = findViewById<RelativeLayout>(R.id.rl_clear_cache)
+        rlClearCache?.setOnClickListener(this)
+
+        rlModifyPwd = findViewById<RelativeLayout>(R.id.rl_modify_pwd)
+        rlModifyPwd?.setOnClickListener(this)
+
+
+
     }
 
     override fun showProgress() {
@@ -68,7 +93,6 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
 
     override fun dismissProgress() {
     }
-
 
 
     override fun initPresenter() = null

@@ -4,4 +4,7 @@
     <string name="photo_collections">图集：%1$s</string>
     <!-- 共享过度动画 -->
     <string name="transition_photos">transition_animation_news_photos</string>
+    <string name="news_from">%1$s %2$s</string>
+    <string name="photo_news">图片新闻</string>
+    <string name="photo_detail_title">%1$d/%2$d　%3$s</string>
 </resources>

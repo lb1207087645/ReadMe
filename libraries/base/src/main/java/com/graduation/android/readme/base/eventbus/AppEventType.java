@@ -21,7 +21,7 @@ public class AppEventType {
     /**
      * 刷新患者列表
      */
-    public static final int PATIENT_LIST = 0X03;
+    public static final int UPDATE_INFO = 0X03;
 
 
     /**

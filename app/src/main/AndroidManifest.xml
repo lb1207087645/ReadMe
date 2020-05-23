@@ -46,6 +46,26 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".home.NewsDetailActivity" />
+        <activity android:name=".home.NewsPhotoDetailActivity" />
+
+        <activity android:name=".setting.ModifyPwdActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".setting.ModifyNickNameActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".setting.PersonInfoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
+
+
+
 
         <activity
             android:name=".activity.SplashActivity"

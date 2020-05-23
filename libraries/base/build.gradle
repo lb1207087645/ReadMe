@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.1"
@@ -72,5 +74,6 @@ dependencies {
 
     api 'com.github.orangegangsters:swipy:1.2.3@aar'
     api 'org.greenrobot:eventbus:3.1.1'
+    api 'com.commit451:PhotoView:1.2.4'//图片缩放
 
 }

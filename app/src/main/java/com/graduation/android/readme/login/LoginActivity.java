@@ -63,7 +63,6 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter, LoginCo
 
     @Override
     protected void initWidget(Bundle savedInstanceState) {
-
         ((TextView) getToolbarTitleView()).setText("登录");
     }
 
@@ -123,7 +122,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter, LoginCo
     @OnClick({R.id.tv_login, R.id.tv_register, R.id.tv_forget_password})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_login:
+            case R.id.tv_login://登录
                 String userName = edtUserName.getText().toString().trim();
                 String pwd = edtPassword.getText().toString().trim();
                 if (TextUtils.isEmpty(userName)) {

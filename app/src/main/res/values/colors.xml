@@ -6,7 +6,7 @@
     <!-- 主体文字,标题/标签 -->
     <color name="txt_black">#212121</color>
 
-
+    <color name="primary_text_white">#deffffff</color>
 
     <color name="common_ColorPrimary">#3F51B5</color>
     <color name="common_ColorPrimaryDark">#303F9F</color>
@@ -76,4 +76,6 @@
     <color name="transparent">#00000000</color>
     <color name="gray_deep">#c9000000</color>
     <color name="news_tv_source_color">#a3a3a3</color>
+    <color name="alpha_10_black">#1A000000</color>
+    <color name="alpha_20_black">#33000000</color>
 </resources>

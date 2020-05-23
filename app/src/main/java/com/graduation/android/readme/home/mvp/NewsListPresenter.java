@@ -37,9 +37,7 @@ public class NewsListPresenter extends BasePresenter<NewsListContract.View> impl
 
     private NewsListModel model;
 
-    // private LoginPresenter mLoginPresenter;
     public NewsListPresenter() {
-// mLoginPresenter = this;
         model = new NewsListModel();
     }
 
@@ -48,24 +46,20 @@ public class NewsListPresenter extends BasePresenter<NewsListContract.View> impl
     public void getNewsListDataRequest(String type, String id, int startPage) {
         subscribe(model.getNewsList(Api.getCacheControl(), type, id, startPage), new BaseObserver<Map<String, List<NewsSummary>>>() {
             @Override
-            public void onError(ErrorEntity err) {
-
+            public void onError(ErrorEntity err) {//先实现，再优化
                 L.d("data", "onError");
                 getView().showErr(err);
-//                getView().loadFreshNews(null);
             }
 
             @Override
             public void onAfter() {
                 L.d("data", "onAfter");
-
             }
 
             @Override
             public void onData(Map<String, List<NewsSummary>> baseResponse) {
                 L.d("data", "onData----" + baseResponse.toString());
                 getView().showContentView();
-
                 for (String key : baseResponse.keySet()) {
                     System.out.println("key= " + key + " and value= " + baseResponse.get(key));
                     List<NewsSummary> list = baseResponse.get(key);
@@ -78,38 +72,4 @@ public class NewsListPresenter extends BasePresenter<NewsListContract.View> impl
         });
 
     }
-
-
-//    public Observable<List<NewsSummary>> getNewsListData(final String type, final String id, final int startPage) {
-//        return model.getNewsList(Api.getCacheControl(), type, id, startPage)
-//                .flatMap(new Function<Map<String, List<NewsSummary>>, Observable<NewsSummary>>() {
-//                    @Override
-//                    public Observable<NewsSummary> apply(Map<String, List<NewsSummary>> map) {
-//                        if (id.endsWith(ApiConstants.HOUSE_ID)) {
-//                            // 房产实际上针对地区的它的id与返回key不同
-//                            return Observable.fromIterable(map.get("北京"));//TODO 这里可能出问题
-//                        }
-//                        return Observable.fromIterable(map.get(id));//TODO 这里可能出问题
-//                    }
-//                })
-//                //转化时间
-//                .map(new Function<NewsSummary, NewsSummary>() {
-//                    @Override
-//                    public NewsSummary apply(NewsSummary newsSummary) {
-//                        String ptime = TimeUtil.formatDate(newsSummary.getPtime());
-//                        newsSummary.setPtime(ptime);
-//                        return newsSummary;
-//                    }
-//                })
-//                .distinct()//去重
-//                .toSortedList(new BiFunction<NewsSummary, NewsSummary, Integer>() {
-//                    @Override
-//                    public Integer apply(NewsSummary newsSummary, NewsSummary newsSummary2) {
-//                        return newsSummary2.getPtime().compareTo(newsSummary.getPtime());
-//                    }
-//                })
-//                .compose(RxSchedulers.<List<NewsSummary>>io_main());;//声明线程调度
-//
-//
-//    }
 }
