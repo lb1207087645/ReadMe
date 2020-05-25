@@ -77,7 +77,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".wiki.ReadActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Transparent"
+            android:hardwareAccelerated="true"
 
+            android:windowSoftInputMode="stateAlwaysHidden">
+        </activity>
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="com.graduation.android.readme.BmobContentProvider"></provider>

@@ -107,6 +107,13 @@
         <item name="android:layout_marginLeft">5.5dp</item>
 
     </style>
+
+    <!-- 用于开启滑动返回功能的 Activity -->
+    <style name="AppTheme.Transparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="setting_img">
         <item name="android:layout_width">8dp</item>
         <item name="android:layout_height">15dp</item>

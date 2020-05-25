@@ -1,9 +1,10 @@
-package com.graduation.android.readme.news.mvp;
+package com.graduation.android.readme.wiki.mvp;
 
 import com.graduation.android.readme.base.mvp.BaseView;
 import com.graduation.android.readme.base.mvp.IPresenter;
 import com.graduation.android.readme.bean.NewsDetail;
 import com.graduation.android.readme.model.FreshBean;
+import com.graduation.android.readme.wiki.bean.FreshNewsArticleBean;
 
 import java.util.List;
 
@@ -31,24 +32,14 @@ public interface NewsContract {
          */
         void loadNewsData(List<NewsDetail> itemBeanList);
 
+        void loadFreshNewsSuccess(FreshNewsArticleBean articleBean);
+
     }
 
     interface Presenter extends IPresenter<View> {
-
-
         void getFreshNews(int page);
 
-        /**
-         * 获取新闻详细信息
-         *
-         * @param id      频道ID值
-         * @param action  用户操作方式
-         *                1：下拉 down
-         *                2：上拉 up
-         *                3：默认 default
-         * @param pullNum 操作次数 累加
-         */
-        void getNewsData(String id, String action, int pullNum);
+        void getFreshNewsArticle(int id);
 
     }
 }

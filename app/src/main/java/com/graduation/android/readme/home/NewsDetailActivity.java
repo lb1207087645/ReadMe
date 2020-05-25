@@ -2,8 +2,11 @@ package com.graduation.android.readme.home;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -19,29 +22,37 @@ import android.widget.TextView;
 
 import com.graduation.android.readme.R;
 import com.graduation.android.readme.app.AppConstant;
+import com.graduation.android.readme.base.BaseApplication;
 import com.graduation.android.readme.base.image.ImageLoadConfig;
 import com.graduation.android.readme.base.image.ImageLoaderManager;
+import com.graduation.android.readme.base.utils.ToastUtils;
 import com.graduation.android.readme.basemodule.BaseActivity;
 import com.graduation.android.readme.home.bean.NewsDetail;
 import com.graduation.android.readme.home.mvp.NewsDetailsContract;
 import com.graduation.android.readme.home.mvp.NewsDetailsPresenter;
 import com.graduation.android.readme.http.RxSchedulers;
+import com.graduation.android.readme.mine.MineFragment;
 import com.graduation.android.readme.utils.TimeUtil;
+import com.graduation.android.share.utils.DialogUtil;
+import com.graduation.android.share.utils.ShareSdkUtils;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
 import io.reactivex.Observable;
 
 /**
  * 普通新闻详情
  */
-public class NewsDetailActivity extends BaseActivity<NewsDetailsContract.Presenter, NewsDetailsContract.View> implements NewsDetailsContract.View {
+public class NewsDetailActivity extends BaseActivity<NewsDetailsContract.Presenter, NewsDetailsContract.View> implements NewsDetailsContract.View, PlatformActionListener {
 
 
     @BindView(R.id.news_detail_from_tv)
@@ -64,6 +75,7 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailsContract.Present
 
     private String mNewsTitle;
     private String mShareLink;
+    private ShareSdkUtils shareSdkUtils;
 //
 //    private URLImageGetter mUrlImageGetter;
 
@@ -81,6 +93,88 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailsContract.Present
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         ((TextView) getToolbarTitleView()).setText("新闻详情");
+    }
+
+    @Override
+    protected void bindEventListener() {
+
+        //分享
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                shareSdkUtils = new ShareSdkUtils(BaseApplication.getContext());
+                try {
+                    final Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+                    DialogUtil dialogUtil = DialogUtil.getInstance();
+                    dialogUtil.showShareDialog(NewsDetailActivity.this, true);
+                    final String content = "来自读我的分享";
+                    dialogUtil.setmDialogClickListener(new DialogUtil.OnClickListener() {
+                        @Override
+                        public void onQqClick() {
+                            shareSdkUtils.shareQQ_WebPage(content+mShareLink, mNewsTitle, content, bmp, NewsDetailActivity.this);
+                        }
+
+                        @Override
+                        public void onWeChatClick() {
+
+//
+//                    Wechat.ShareParams sp = new Wechat.ShareParams();
+//                    //微信分享网页的参数严格对照列表中微信分享网页的参数要求
+//                    sp.setTitle("标题");
+//                    sp.setText("我是共用的参数，这几个平台都有text参数要求，提取出来啦");
+//                    sp.setImageUrl("https://hmls.hfbank.com.cn/hfapp-api/9.png");
+//                    sp.setUrl("http://sharesdk.cn");
+//                    sp.setShareType(Platform.SHARE_WEBPAGE);
+//                    LogUtils.d("ShareSDK", sp.toMap().toString());
+//                    Platform weChat = ShareSDK.getPlatform(Wechat.NAME);
+//// 设置分享事件回调（注：回调放在不能保证在主线程调用，不可以在里面直接处理UI操作）
+//                    weChat.setPlatformActionListener(new PlatformActionListener() {
+//                        @Override
+//                        public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+//                            LogUtils.d("ShareSDK", "onComplete ---->  分享成功");
+//
+//                        }
+//
+//                        @Override
+//                        public void onError(Platform platform, int i, Throwable throwable) {
+//                            LogUtils.d("ShareSDK", "onError ---->  分享失败" + throwable.getStackTrace().toString());
+//                            LogUtils.d("ShareSDK", "onError ---->  分享失败" + throwable.getMessage());
+//                            throwable.getMessage();
+//                            throwable.printStackTrace();
+//                        }
+//
+//                        @Override
+//                        public void onCancel(Platform platform, int i) {
+//                            LogUtils.d("ShareSDK", "onCancel ---->  分享取消");
+//                        }
+//                    });
+//// 执行图文分享
+//                    weChat.share(sp);
+                            shareSdkUtils.shareWechat_WebPage(mShareLink, mNewsTitle, content, bmp, NewsDetailActivity.this);
+                        }
+
+                        @Override
+                        public void onQZoneClick() {
+                            //  mShareUtils.shareQZone_WebPage(finalShareUrl, title, content, mFilePath, InviteBuildActivity.this);
+                        }
+
+                        @Override
+                        public void onWeChatFriendsClick() {
+                            //    mShareUtils.shareWechatFriends_WebPage(finalShareUrl, title, content, mFilePath, InviteBuildActivity.this);
+                        }
+
+                        @Override
+                        public void onMessageClick() {
+                            //    mShareUtils.shareMessage_Test(title + (type == 1 ? ",邀请地址<" : ",领取地址<") + finalShareUrl + ">", InviteBuildActivity.this);
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     @Override
@@ -191,6 +285,7 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailsContract.Present
 
     /**
      * 显示新闻详情的图片
+     *
      * @param imgSrc
      */
     private void setNewsDetailPhotoIv(String imgSrc) {
@@ -206,5 +301,19 @@ public class NewsDetailActivity extends BaseActivity<NewsDetailsContract.Present
         setBody(newsDetail, newsBody);
     }
 
+    @Override
+    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+        ToastUtils.showToast(BaseApplication.getContext(), "分享成功");
+    }
+
+    @Override
+    public void onError(Platform platform, int i, Throwable throwable) {
+        ToastUtils.showToast(BaseApplication.getContext(), "分享失败");
+    }
+
+    @Override
+    public void onCancel(Platform platform, int i) {
+        ToastUtils.showToast(BaseApplication.getContext(), "分享取消");
+    }
 }
 

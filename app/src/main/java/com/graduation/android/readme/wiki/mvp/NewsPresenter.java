@@ -1,14 +1,17 @@
-package com.graduation.android.readme.news.mvp;
+package com.graduation.android.readme.wiki.mvp;
 
 import android.app.Activity;
+import android.view.View;
 
 import com.graduation.android.readme.base.mvp.BasePresenter;
 import com.graduation.android.readme.base.network.ErrorEntity;
 import com.graduation.android.readme.bean.NewsDetail;
 import com.graduation.android.readme.http.BaseObserver;
+import com.graduation.android.readme.http.RxSchedulers;
 import com.graduation.android.readme.model.FreshBean;
 import com.graduation.android.readme.model.FreshNewsBean;
 import com.graduation.android.readme.model.NewsModel;
+import com.graduation.android.readme.wiki.bean.FreshNewsArticleBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +23,10 @@ import java.util.List;
 public class NewsPresenter extends BasePresenter<NewsContract.View> implements NewsContract.Presenter {
 
 
-    private Activity mActivity;
-
-
     private NewsModel model;
     private NewsPresenter mHomePresenterTest;
 
-    public NewsPresenter(Activity activity) {
-        mActivity = activity;
+    public NewsPresenter() {
         mHomePresenterTest = this;
         model = new NewsModel();
     }
@@ -57,15 +56,11 @@ public class NewsPresenter extends BasePresenter<NewsContract.View> implements N
         });
     }
 
-    /**
-     * 新闻数据回调
-     */
     @Override
-    public void getNewsData(String id, String action, int pullNum) {
-        subscribe(model.getNewsDetail(id, action, pullNum), new BaseObserver<List<NewsDetail>>() {
+    public void getFreshNewsArticle(int id) {
+        subscribe(model.getFreshNewsArticle(id), new BaseObserver<FreshNewsArticleBean>() {
             @Override
             public void onError(ErrorEntity err) {
-                getView().showErr(err);
             }
 
             @Override
@@ -74,11 +69,14 @@ public class NewsPresenter extends BasePresenter<NewsContract.View> implements N
             }
 
             @Override
-            public void onData(List<NewsDetail> newsDetails) {
-                getView().loadNewsData(newsDetails);
+            public void onData(FreshNewsArticleBean freshNewsArticleBean) {
+                getView().loadFreshNewsSuccess(freshNewsArticleBean);
             }
         });
+
+
     }
+
 
     private List<FreshBean.PostsBean> changeServerData(FreshNewsBean freshNewsBean) {
         List<FreshBean.PostsBean> studyBeanList = new ArrayList<>();
@@ -89,6 +87,7 @@ public class NewsPresenter extends BasePresenter<NewsContract.View> implements N
                 postBean = new FreshBean.PostsBean();
                 postBean.setItemType(NewsDetail.ItemBean.TYPE_DOC_TITLEIMG);
                 postBean.setTitle(postsBean.getTitle());
+                postBean.setId(postsBean.getId());
 //            studyBean.setUrl(postsBean.getUrl());
                 // studyBean.getAuthor().setName(postsBean.getAuthor().getName());
                 postBean.setComment_count(postsBean.getComment_count());

@@ -1,12 +1,15 @@
 package com.graduation.android.share.utils;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.friends.Wechat;
 
 
 /**
@@ -36,32 +39,32 @@ public class ShareSdkUtils {
 //    /**
 //     * 分享到微信好友 图片
 //     */
-//    public void shareWeChat_ImagePath(@NonNull String mBmpPath, @NonNull String title, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform("Wechat");
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_IMAGE);// 一定要设置分享属性
-//        sp.setTitle(title);
-//        sp.setImagePath(mBmpPath);
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        // 执行图文分享
-//        platform.share(sp);
-//
-//    }
-//
-//    /**
-//     * 分享到短信图片
-//     */
-//    public void shareMessage_ImagePath(@NonNull String mBmpPath, @NonNull String text, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform("ShortMessage");
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_IMAGE);// 一定要设置分享属性
-//        sp.setTitle(text);
-//        sp.setImagePath(mBmpPath);
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        // 执行图文分享
-//        platform.share(sp);
-//    }
-//
+    public void shareWeChat_ImagePath(@NonNull String mBmpPath, @NonNull String title, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform("Wechat");
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_IMAGE);// 一定要设置分享属性
+        sp.setTitle(title);
+        sp.setImagePath(mBmpPath);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        platform.share(sp);
+
+    }
+
+    /**
+     * 分享到短信图片
+     */
+    public void shareMessage_ImagePath(@NonNull String mBmpPath, @NonNull String text, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform("ShortMessage");
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_IMAGE);// 一定要设置分享属性
+        sp.setTitle(text);
+        sp.setImagePath(mBmpPath);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        platform.share(sp);
+    }
+
 
     /**
      * QQ分享图片
@@ -80,98 +83,98 @@ public class ShareSdkUtils {
     }
 
     //
-//
-//    /**
-//     * 分享到微信好友 文本
-//     */
-//    public void shareWeChat_Test(String text, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform("Wechat");
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_TEXT);// 一定要设置分享属性
-//        sp.setText(text);
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        // 执行图文分享
-//        platform.share(sp);
-//    }
-//
-//    /**
-//     * 分享到短信好友
-//     */
-//    public void shareMessage_Test(String text, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform("ShortMessage");
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_TEXT);// 一定要设置分享属性
-//        sp.setText(text);
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        // 执行图文分享
-//        platform.share(sp);
-//    }
-//
-//    /**
-//     * @param text
-//     * @param listener
-//     */
-//    public void shareQQ_Test(String text, PlatformActionListener listener) {
-//        Intent sendIntent = new Intent();
-//        sendIntent.setAction(Intent.ACTION_SEND);
-//        sendIntent.putExtra(Intent.EXTRA_TEXT, text);
-//        sendIntent.setType("text/plain");
-//        try {
-//            sendIntent.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity");
-//            Intent chooserIntent = Intent.createChooser(sendIntent, "选择分享途径");
-//            if (chooserIntent == null) {
-//                return;
-//            }
-//            mContext.startActivity(chooserIntent);
-//        } catch (Exception e) {
-//            mContext.startActivity(sendIntent);
-//        }
-//    }
-//
-//    /**
-//     * 分享微信 （本地图标）
-//     */
-//    public void shareWechat_WebPage(String url, String title, String content, Bitmap imagePath, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform(Wechat.NAME);
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
-//        sp.setTitle(title);
-//        sp.setText(content);
-//        sp.setImageData(imagePath);
-//        sp.setUrl(dealWithUrl(url));
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        platform.share(sp);
-//    }
+
+    /**
+     * 分享到微信好友 文本
+     */
+    public void shareWeChat_Test(String text, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform("Wechat");
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_TEXT);// 一定要设置分享属性
+        sp.setText(text);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        platform.share(sp);
+    }
+
+    /**
+     * 分享到短信好友
+     */
+    public void shareMessage_Test(String text, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform("ShortMessage");
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_TEXT);// 一定要设置分享属性
+        sp.setText(text);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        // 执行图文分享
+        platform.share(sp);
+    }
+
+    /**
+     * @param text
+     * @param listener
+     */
+    public void shareQQ_Test(String text, PlatformActionListener listener) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, text);
+        sendIntent.setType("text/plain");
+        try {
+            sendIntent.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.JumpActivity");
+            Intent chooserIntent = Intent.createChooser(sendIntent, "选择分享途径");
+            if (chooserIntent == null) {
+                return;
+            }
+            mContext.startActivity(chooserIntent);
+        } catch (Exception e) {
+            mContext.startActivity(sendIntent);
+        }
+    }
 //
 //    /**
 //     * 分享微信 （本地图标）
 //     */
-//    public void shareWechat_WebPage(String url, String title, String content, String imagePath, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform(Wechat.NAME);
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
-//        sp.setTitle(title);
-//        sp.setText(content);
-//        sp.setImagePath(imagePath);
-//        sp.setUrl(dealWithUrl(url));
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        platform.share(sp);
-//    }
+    public void shareWechat_WebPage(String url, String title, String content, Bitmap imagePath, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform(Wechat.NAME);
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
+        sp.setTitle(title);
+        sp.setText(content);
+        sp.setImageData(imagePath);
+        sp.setUrl(url);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        platform.share(sp);
+    }
+
+    /**
+     * 分享微信 （本地图标）
+     */
+    public void shareWechat_WebPage(String url, String title, String content, String imagePath, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform(Wechat.NAME);
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
+        sp.setTitle(title);
+        sp.setText(content);
+        sp.setImagePath(imagePath);
+        sp.setUrl(url);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        platform.share(sp);
+    }
 //
 //    /**
 //     * 分享微信 （图标Url）
 //     */
-//    public void shareWechat_WebPage2(String url, String title, String content, String imageUrl, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform(Wechat.NAME);
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
-//        sp.setTitle(title);
-//        sp.setText(content);
-//        sp.setImageUrl(imageUrl);
-//        sp.setUrl(dealWithUrl(url));
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        platform.share(sp);
-//    }
+    public void shareWechat_WebPage2(String url, String title, String content, String imageUrl, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform(Wechat.NAME);
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
+        sp.setTitle(title);
+        sp.setText(content);
+        sp.setImageUrl(imageUrl);
+        sp.setUrl(url);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        platform.share(sp);
+    }
 //
 //    /**
 //     * 分享微信（本地图标路径地址）
@@ -188,48 +191,48 @@ public class ShareSdkUtils {
         sp.setTitle(title);
         sp.setTitleUrl(url);
         sp.setText(content);
-//        sp.setImagePath(bmp);
+        sp.setImagePath(bmp);
         platform.setPlatformActionListener(listener); // 设置分享事件回调
         platform.share(sp);
     }
 //
-//    public void shareQQ_WebPage(String url, String title, String content, Bitmap bmp, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform(QQ.NAME);//?
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
-//        sp.setTitle(title);
-//        sp.setTitleUrl(dealWithUrl(url));
-//        sp.setText(content);
-//        sp.setImageData(bmp);
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        platform.share(sp);
-//    }
+    public void shareQQ_WebPage(String url, String title, String content, Bitmap bmp, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform(QQ.NAME);//?
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
+        sp.setTitle(title);
+        sp.setTitleUrl(url);
+        sp.setText(content);
+        sp.setImageData(bmp);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        platform.share(sp);
+    }
 //
-//    public void shareQQ_WebPage2(String url, String title, String content, String imageUrl, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform(QQ.NAME);//?
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
-//        sp.setTitle(title);
-//        sp.setTitleUrl(dealWithUrl(url));
-//        sp.setText(content);
-//        sp.setImageUrl(imageUrl);
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        platform.share(sp);
-//    }
-//
-//    public void shareQZone_WebPage(String url, String title, String content, String bmp, PlatformActionListener listener) {
-//        Platform platform = ShareSDK.getPlatform(QZone.NAME);//OK
-//        Platform.ShareParams sp = new Platform.ShareParams();
-//        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
-//        sp.setTitle(title);
-//        sp.setTitleUrl(url);
-//        sp.setSite("光");
-//        sp.setSiteUrl(dealWithUrl(url));
-//        sp.setText(content);
-//        sp.setImagePath(bmp);
-//        platform.setPlatformActionListener(listener); // 设置分享事件回调
-//        platform.share(sp);
-//    }
+    public void shareQQ_WebPage2(String url, String title, String content, String imageUrl, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform(QQ.NAME);//?
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
+        sp.setTitle(title);
+        sp.setTitleUrl(url);
+        sp.setText(content);
+        sp.setImageUrl(imageUrl);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        platform.share(sp);
+    }
+
+    public void shareQZone_WebPage(String url, String title, String content, String bmp, PlatformActionListener listener) {
+        Platform platform = ShareSDK.getPlatform(QZone.NAME);//OK
+        Platform.ShareParams sp = new Platform.ShareParams();
+        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
+        sp.setTitle(title);
+        sp.setTitleUrl(url);
+        sp.setSite("光");
+        sp.setSiteUrl(url);
+        sp.setText(content);
+        sp.setImagePath(bmp);
+        platform.setPlatformActionListener(listener); // 设置分享事件回调
+        platform.share(sp);
+    }
 //
 //    public void shareQZone_WebPage(String url, String title, String content, Bitmap bmp, PlatformActionListener listener) {
 //        Platform platform = ShareSDK.getPlatform(QZone.NAME);//OK

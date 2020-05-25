@@ -14,9 +14,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 /**
  * desc: 实例化Retrofit 单例
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
  */
 class RetrofitClient {
 

@@ -6,9 +6,6 @@ import android.content.Context;
 
 /**
  * desc: application基类
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
  */
 @SuppressLint("Registered")
 public class CommonApplication extends Application {

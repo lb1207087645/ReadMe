@@ -2,8 +2,10 @@ package com.graduation.android.readme.model;
 
 import android.support.v4.media.session.PlaybackStateCompat;
 
+import com.graduation.android.readme.base.net.ApiConstants;
 import com.graduation.android.readme.base.network.RetrofitServiceManager;
 import com.graduation.android.readme.bean.NewsDetail;
+import com.graduation.android.readme.wiki.bean.FreshNewsArticleBean;
 
 import java.util.List;
 
@@ -15,6 +17,7 @@ import retrofit2.http.Url;
 public class NewsModel {
 
     public static final String TYPE_FRESH = "get_recent_posts";
+    public static final String TYPE_FRESHARTICLE = "get_post";
     private ModelService modelService;
 
     public NewsModel() {
@@ -39,6 +42,11 @@ public class NewsModel {
         return modelService.getFreshNews("http://i.jandan.net/", TYPE_FRESH,
                 "url,date,tags,author,title,excerpt,comment_count,comment_status,custom_fields",
                 page, "thumb_c,views", "1");
+    }
+
+
+    public Observable<FreshNewsArticleBean> getFreshNewsArticle(int id) {
+        return modelService.getFreshNewsArticle(ApiConstants.sJanDanApi, TYPE_FRESHARTICLE, "content,date,modified", id);
     }
 
 
@@ -72,6 +80,19 @@ public class NewsModel {
                                                @Query("dev") String dev
         );
 
+        /**
+         * 煎蛋新闻详情
+         *
+         * @param oxwlxojflwblxbsapi
+         * @param include
+         * @return
+         */
+
+        @GET
+        Observable<FreshNewsArticleBean> getFreshNewsArticle(@Url String url, @Query("oxwlxojflwblxbsapi") String oxwlxojflwblxbsapi,
+                                                             @Query("include") String include,
+                                                             @Query("id") int id
+        );
 
     }
 

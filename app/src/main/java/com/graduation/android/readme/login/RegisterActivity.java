@@ -1,7 +1,6 @@
 package com.graduation.android.readme.login;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,15 +11,10 @@ import com.graduation.android.readme.base.utils.ToastUtils;
 import com.graduation.android.readme.basemodule.BaseActivity;
 import com.graduation.android.readme.login.mvp.LoginContract;
 import com.graduation.android.readme.login.mvp.LoginPresenter;
-import com.graduation.android.readme.news.mvp.NewsPresenter;
-import com.mob.wrappers.AnalySDKWrapper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
 
 
 /**

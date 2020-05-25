@@ -1,4 +1,4 @@
-package com.graduation.android.readme.news;
+package com.graduation.android.readme.wiki;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,13 +7,16 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.graduation.android.readme.adapter.NewsAdapter;
+import com.graduation.android.readme.base.adapter.BaseQuickAdapter;
 import com.graduation.android.readme.bean.NewsDetail;
 import com.graduation.android.readme.R;
 import com.graduation.android.readme.base.mvp.BaseFragment;
 
 import com.graduation.android.readme.model.FreshBean;
-import com.graduation.android.readme.news.mvp.NewsContract;
-import com.graduation.android.readme.news.mvp.NewsPresenter;
+import com.graduation.android.readme.model.FreshNewsBean;
+import com.graduation.android.readme.wiki.bean.FreshNewsArticleBean;
+import com.graduation.android.readme.wiki.mvp.NewsContract;
+import com.graduation.android.readme.wiki.mvp.NewsPresenter;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
 import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 
@@ -21,9 +24,9 @@ import java.util.List;
 
 
 /**
- * 新闻的NewsFragment
+ * 百科的Fragment
  */
-public class NewsFragment extends BaseFragment<NewsContract.Presenter, NewsContract.View> implements NewsContract.View {
+public class WikiFragment extends BaseFragment<NewsContract.Presenter, NewsContract.View> implements NewsContract.View {
 
 
     ImageView iv_image;//图片显示
@@ -37,7 +40,7 @@ public class NewsFragment extends BaseFragment<NewsContract.Presenter, NewsContr
 
     @Override
     protected NewsContract.Presenter initPresenter() {
-        return new NewsPresenter(mActivity);
+        return new NewsPresenter();
     }
 
     @Override
@@ -45,10 +48,11 @@ public class NewsFragment extends BaseFragment<NewsContract.Presenter, NewsContr
         return R.layout.frag_news;
     }
 
+
+
     @Override
     public void loadData() {
-        mPresenter.getFreshNews(0);
-     //   mPresenter.getNewsData("SYLB10,SYDT10", "down", 2);
+        mPresenter.getFreshNews(0);//请求接口数据
     }
 
 
@@ -69,11 +73,24 @@ public class NewsFragment extends BaseFragment<NewsContract.Presenter, NewsContr
         NewsAdapter newsAdapter = new NewsAdapter(postsBean);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(newsAdapter);
+        newsAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                ReadActivity.launch(getActivity(), (FreshBean.PostsBean) adapter.getItem(position));
+            }
+        });
+
+
     }
 
     @Override
     public void loadNewsData(List<NewsDetail> itemBeanList) {
 
+
+    }
+
+    @Override
+    public void loadFreshNewsSuccess(FreshNewsArticleBean articleBean) {
 
     }
 

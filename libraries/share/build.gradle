@@ -36,24 +36,24 @@ MobSDK {
         //平台配置信息
         devInfo {
             Wechat {
-                appId "wx4868b35061f87885"
-                appSecret "64020361b8ec4c99936c0e3999a9f249"
+                appId "wxc8cec7ba28526e82s"
+                appSecret "82fccc5ccffd7e4aaf5907b9f36e911edd"
             }
             QQ {
 
-                appId "100371282"
-                appKey "aed9b0303e3ed1e27bae87c33761161d"
+                appId "1105369515"
+                appKey "BmgAjHO8ZiB6v4lcs"
                 shareByAppClient false
                 bypassApproval false
                 enable true
             }
 
-            SinaWeibo {
-                appKey "568898243"
-                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
-                callbackUri "http://www.sharesdk.cn"
-                shareByAppClient true
-            }
+//            SinaWeibo {
+//                appKey "568898243"
+//                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+//                callbackUri "http://www.sharesdk.cn"
+//                shareByAppClient true
+//            }
         }
 
 

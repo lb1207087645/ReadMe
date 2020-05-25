@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DevInfor>
-<SinaWeibo AppKey="568898243" AppSecret="38a4f8204cc784f81f9f0daaf31e02e3" ShareByAppClient="true" RedirectUrl="http://www.sharesdk.cn" />
+<SinaWeibo Enable="false" />
 <TencentWeibo Enable="false" />
 <Douban Enable="false" />
 <QZone Enable="false" />
@@ -16,9 +16,9 @@
 <Tumblr Enable="false" />
 <Email Enable="false" />
 <ShortMessage Enable="false" />
-<Wechat AppId="wx4868b35061f87885" AppSecret="64020361b8ec4c99936c0e3999a9f249" />
+<Wechat AppId="wxc8cec7ba28526e82s" AppSecret="82fccc5ccffd7e4aaf5907b9f36e911edd" />
 <WechatMoments Enable="false" />
-<QQ AppId="100371282" AppKey="aed9b0303e3ed1e27bae87c33761161d" ShareByAppClient="false" BypassApproval="false" Enable="true" />
+<QQ AppId="1105369515" AppKey="BmgAjHO8ZiB6v4lcs" ShareByAppClient="false" BypassApproval="false" Enable="true" />
 <Instapaper Enable="false" />
 <Pocket Enable="false" />
 <YouDao Enable="false" />
