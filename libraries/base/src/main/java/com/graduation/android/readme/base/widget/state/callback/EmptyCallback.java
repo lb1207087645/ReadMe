@@ -8,9 +8,6 @@ import com.graduation.android.readme.base.widget.state.CommonBaseCallback;
  * 无数据状态UI
  *
  * @date：2017/10/10
- * @author：chenqq
- * @company: www.babybus.com
- * @email: ym_qqchen@sina.com
  */
 
 public class EmptyCallback extends CommonBaseCallback implements IEmptyCallback {

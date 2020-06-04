@@ -6,10 +6,6 @@ import com.graduation.android.readme.base.widget.state.CommonBaseCallback;
 /**
  * 正在加载状态UI
  *
- * @date：2017/10/10
- * @author：chenqq
- * @company: www.babybus.com
- * @email: ym_qqchen@sina.com
  */
 
 public class LoadingCallback extends CommonBaseCallback implements ILoadingCallback {

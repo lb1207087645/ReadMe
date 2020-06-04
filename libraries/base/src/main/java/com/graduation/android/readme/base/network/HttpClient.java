@@ -20,9 +20,6 @@ import okhttp3.OkHttpClient;
 
 /**
  * desc: 单例httpclient，设置一些超时设置和缓存
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
  */
 class HttpClient {
 

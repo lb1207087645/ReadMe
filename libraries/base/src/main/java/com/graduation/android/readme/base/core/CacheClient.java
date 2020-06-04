@@ -20,10 +20,6 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * desc: 缓存的单例httpclient
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
- * 参考项目：https://github.com/HolenZhou/rxcache
  */
 public class CacheClient {
 

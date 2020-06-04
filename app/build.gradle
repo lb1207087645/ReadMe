@@ -26,7 +26,7 @@ android {
 //            buildConfigField "String", "BASE_URL", "\"http://i.jandan.net/\""//煎蛋网
             buildConfigField "String", "BASE_URL", "\"http://fanyi.youdao.com/\""//post测试
 
-            buildConfigField "String", "BASE_CONFIG_URL", "\"http://test.api-base.babybus.co/\""
+
 
             minifyEnabled false
 //            zipAlignEnabled false
@@ -42,7 +42,6 @@ android {
 
             buildConfigField "String", "BASE_URL", "\"http://fanyi.youdao.com/\""//post测试
 
-            buildConfigField "String", "BASE_CONFIG_URL", "\"http://test.api-base.babybus.co/\""
 
 
             minifyEnabled false

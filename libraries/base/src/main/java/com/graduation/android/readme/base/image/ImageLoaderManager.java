@@ -9,9 +9,6 @@ import com.graduation.android.readme.base.image.listener.ImageLoaderListener;
 
 /**
  * desc: 图片加载器
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
  */
 public class ImageLoaderManager implements IImageLoader {
 

@@ -19,9 +19,6 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * desc: 控制操作线程的辅助类
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
  */
 public class Transformer {
 

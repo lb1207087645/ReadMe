@@ -30,9 +30,6 @@ import java.util.concurrent.Executors;
 
 /**
  * desc: 图片加载器的glide实现
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
  */
 public class GlideImageLoader implements IImageLoader {
 

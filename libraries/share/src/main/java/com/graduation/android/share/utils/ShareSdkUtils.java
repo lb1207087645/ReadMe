@@ -220,19 +220,19 @@ public class ShareSdkUtils {
         platform.share(sp);
     }
 
-    public void shareQZone_WebPage(String url, String title, String content, String bmp, PlatformActionListener listener) {
-        Platform platform = ShareSDK.getPlatform(QZone.NAME);//OK
-        Platform.ShareParams sp = new Platform.ShareParams();
-        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
-        sp.setTitle(title);
-        sp.setTitleUrl(url);
-        sp.setSite("光");
-        sp.setSiteUrl(url);
-        sp.setText(content);
-        sp.setImagePath(bmp);
-        platform.setPlatformActionListener(listener); // 设置分享事件回调
-        platform.share(sp);
-    }
+//    public void shareQZone_WebPage(String url, String title, String content, String bmp, PlatformActionListener listener) {
+//        Platform platform = ShareSDK.getPlatform(QZone.NAME);//OK
+//        Platform.ShareParams sp = new Platform.ShareParams();
+//        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
+//        sp.setTitle(title);
+//        sp.setTitleUrl(url);
+//        sp.setSite("光");
+//        sp.setSiteUrl(url);
+//        sp.setText(content);
+//        sp.setImagePath(bmp);
+//        platform.setPlatformActionListener(listener); // 设置分享事件回调
+//        platform.share(sp);
+//    }
 //
 //    public void shareQZone_WebPage(String url, String title, String content, Bitmap bmp, PlatformActionListener listener) {
 //        Platform platform = ShareSDK.getPlatform(QZone.NAME);//OK

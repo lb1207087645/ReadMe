@@ -24,7 +24,6 @@ import com.graduation.android.readme.basemodule.BaseActivity;
 import com.graduation.android.readme.home.NewsMainFragment;
 import com.graduation.android.readme.mine.MineFragment2;
 import com.graduation.android.readme.wiki.WikiFragment;
-import com.graduation.android.readme.web.WebViewFragment;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class MainActivity extends BaseActivity {
     /**
      * tab 页String
      */
-    private String[] tabStrArray = {"新闻", "百科", "商城", "我的"};
+    private String[] tabStrArray = {"新闻", "百科",  "我的"};
 
     private MainAdapter vpAdapter;
 
@@ -90,7 +89,6 @@ public class MainActivity extends BaseActivity {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new NewsMainFragment());
         fragments.add(new WikiFragment());
-        fragments.add(new WebViewFragment());//商城
         fragments.add(new MineFragment2());//我的
         vpAdapter = new MainAdapter(getSupportFragmentManager(), fragments);
         mainViewPager.setAdapter(vpAdapter);

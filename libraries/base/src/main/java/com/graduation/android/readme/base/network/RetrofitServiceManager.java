@@ -25,9 +25,6 @@ import retrofit2.Retrofit;
 
 /**
  * desc: 网络操作管理单例
- * Created by lyt
- * www.babybus.com
- * email:lytjackson@gmail.com
  */
 @SuppressWarnings("unused")
 public class RetrofitServiceManager {
