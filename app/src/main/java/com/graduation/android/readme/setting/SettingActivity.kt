@@ -45,6 +45,10 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
                 startActivity(Intent(mActivity, ModifyPwdActivity::class.java))
             }
 
+            R.id.rl_about_us -> {//关于我们
+                startActivity(Intent(mActivity, AboutUsActivity::class.java))
+            }
+
 
         }
     }
@@ -68,8 +72,7 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
 
         rlModifyPwd = findViewById<RelativeLayout>(R.id.rl_modify_pwd)
         rlModifyPwd?.setOnClickListener(this)
-
-
+        rl_about_us?.setOnClickListener(this)
 
     }
 

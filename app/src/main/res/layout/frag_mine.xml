@@ -13,40 +13,27 @@
         android:layout_marginTop="50dp"
         android:clickable="false"
         android:ellipsize="end"
+        android:paddingBottom="10dp"
         android:gravity="center|start"
         android:maxLines="1"
         android:text="注册/登录"
         android:textColor="#4A3009"
         android:textSize="18sp" />
-
+    <View style="@style/line" />
 
     <TextView
 
         android:id="@+id/tv_personal_file"
         style="@style/setting_style"
         android:text="个人资料" />
-
     <View style="@style/line" />
-
-    <TextView
-        android:id="@+id/tv_about"
-        style="@style/setting_style"
-        android:text="关于" />
-
-    <View style="@style/line" />
-
-    <TextView
-        android:id="@+id/tv_share"
-        style="@style/setting_style"
-        android:text="分享给好友" />
-
-    <View style="@style/line" />
-
-
     <TextView
         android:id="@+id/tv_setting"
         style="@style/setting_style"
         android:text="设置" />
+
+
+
 
     <View style="@style/line" />
 </LinearLayout>
