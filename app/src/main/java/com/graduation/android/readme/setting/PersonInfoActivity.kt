@@ -21,6 +21,13 @@ import kotlinx.android.synthetic.main.activity_person_info.*
 class PersonInfoActivity : BaseActivity<SettingContract.Presenter, SettingContract.View>(),
     SettingContract.View, View.OnClickListener, RadioGroup
     .OnCheckedChangeListener {
+    override fun mfeedbackFailure(errMsg: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun feedbackSuccess() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 
     private var sexMsg: Int = 1

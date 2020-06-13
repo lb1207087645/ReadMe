@@ -27,6 +27,9 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
 
     private var rlModifyPwd: RelativeLayout? = null
 
+
+    private var rlFeekBack: RelativeLayout? = null
+
     private var rlAccountInfo: RelativeLayout? = null
     private var tv_user_name_login_out: TextView? = null
     override fun onClick(v: View) {
@@ -50,6 +53,11 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
             }
 
 
+            R.id.rl_feedback -> {//反馈
+                startActivity(Intent(mActivity, FeedBackActivity::class.java))
+            }
+
+
         }
     }
 
@@ -57,6 +65,9 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
     override fun bindEventListener() {
         tvRight?.setOnClickListener(this)
         rl_clear_cache?.setOnClickListener(this)
+
+
+
     }
 
 
@@ -73,6 +84,10 @@ class SettingActivity : BaseActivity<IPresenter<BaseView>, BaseView>(), View.OnC
         rlModifyPwd = findViewById<RelativeLayout>(R.id.rl_modify_pwd)
         rlModifyPwd?.setOnClickListener(this)
         rl_about_us?.setOnClickListener(this)
+
+
+        rlFeekBack = findViewById<RelativeLayout>(R.id.rl_feedback)
+        rlFeekBack?.setOnClickListener(this)
 
     }
 

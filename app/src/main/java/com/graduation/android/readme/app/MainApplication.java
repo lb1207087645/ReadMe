@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.graduation.android.readme.BuildConfig;
+import com.graduation.android.readme.api.LenientGsonConverterFactory;
 import com.graduation.android.readme.base.BaseApplication;
 
 import com.graduation.android.readme.basemodule.ModuleBaseDiffImpl;
@@ -56,7 +57,7 @@ public class MainApplication extends BaseApplication implements Application.Acti
 
             boolean isShowLog = BuildConfig.LOG_DEBUG;
             RetrofitServiceManager retrofitServiceManager = RetrofitServiceManager.getInstance()
-                    .addConverterFactory(GsonConverterFactory.create());
+                    .addConverterFactory(LenientGsonConverterFactory.create());
 //                    .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create());
 //            if (BuildConfig.LOG_DEBUG) {
 //                retrofitServiceManager.addInterceptor(new HostConfigInterceptor());//添加拦截器

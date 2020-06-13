@@ -15,6 +15,13 @@ import kotlinx.android.synthetic.main.activity_modify_pwd.*
  */
 class ModifyPwdActivity : BaseActivity<SettingContract.Presenter, SettingContract.View>(),
     SettingContract.View, View.OnClickListener {
+    override fun mfeedbackFailure(errMsg: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun feedbackSuccess() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 
     override fun onClick(v: View) {

@@ -67,6 +67,10 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".setting.FeedBackActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            />
 
 
 

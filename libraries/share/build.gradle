@@ -27,19 +27,32 @@ MobSDK {
 
 
     //我们官方sdk的
-    appKey "moba0b0c0d0"
-    appSecret "5713f0d88511f9f4cf100cade0610a34"
+//    appKey "moba0b0c0d0"
+//    appSecret "5713f0d88511f9f4cf100cade0610a34"
+
+//    appKey "moba0b0c0d0"
+//    appSecret "5713f0d88511f9f4cf100cade0610a34"
+
+
+    appKey "2d413f1d5a33e"
+    appSecret "3138003610eeda35d556d0f31959de5e"
 
 
     ShareSDK {
-        gui false //不需要Onekeyshare
+        loopShare true //需要Onekeyshare
+
         //平台配置信息
         devInfo {
             Wechat {
+                id 1
+                sortId 1
                 appId "wxc8cec7ba28526e82s"
                 appSecret "82fccc5ccffd7e4aaf5907b9f36e911edd"
+                bypassApproval false
             }
             QQ {
+                id 2
+                sortId 2
 
                 appId "1105369515"
                 appKey "BmgAjHO8ZiB6v4lcs"
@@ -48,12 +61,80 @@ MobSDK {
                 enable true
             }
 
-//            SinaWeibo {
-//                appKey "568898243"
-//                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
-//                callbackUri "http://www.sharesdk.cn"
-//                shareByAppClient true
-//            }
+            SinaWeibo {
+                id 3
+                sortId 3
+                appKey "568898243"
+                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient true
+            }
+            TencentWeibo {
+                id 4
+                sortId 4
+                appKey "801307650"
+                appSecret "ae36f4ee3946e1cbb98d6965b0b2ff5c"
+                callbackUri "http://sharesdk.cn"
+                enable true
+            }
+            QZone {
+                id 5
+                sortId 5
+                appId "1105369515"
+                appKey "BmgAjHO8ZiB6v4lc"
+                shareByAppClient true
+                bypassApproval false
+                enable true
+            }
+
+            WechatMoments {
+                id 6
+                sortId 6
+                appId "wxc8cec7ba28526e82s"
+                appSecret "82fccc5ccffd7e4aaf5907b9f36e911edd"
+                bypassApproval true
+                enable true
+            }
+            WechatFavorite {
+                id 7
+                sortId 7
+                appId "wxc8cec7ba28526e82s"
+                appSecret "82fccc5ccffd7e4aaf5907b9f36e911edd"
+                bypassApproval false
+                enable true
+            }
+
+
+            Email {
+                id 8
+                sortId 8
+                enable true
+            }
+
+            ShortMessage {
+                id 9
+                sortId 9
+                enable true
+            }
+
+            Douban {
+                id 10
+                sortId 10
+                appKey "031a96a3aa8b28af094fc3eaffa17a0d"
+                appSecret "2e675e730571b75d"
+                callbackUri "http://mob.com"
+                enable true
+            }
+            YouDao {
+                id 11
+                sortId 11
+                hostType "product"
+                appKey "dcde25dca105bcc36884ed4534dab940"
+                appSecret "d98217b4020e7f1874263795f44838fe"
+                callbackUri "http://www.sharesdk.cn/"
+                enable true
+            }
+
         }
 
 

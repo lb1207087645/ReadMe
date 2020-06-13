@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DevInfor>
-<SinaWeibo Enable="false" />
-<TencentWeibo Enable="false" />
-<Douban Enable="false" />
-<QZone Enable="false" />
+<SinaWeibo Id="3" SortId="3" AppKey="568898243" AppSecret="38a4f8204cc784f81f9f0daaf31e02e3" ShareByAppClient="true" RedirectUrl="http://www.sharesdk.cn" />
+<TencentWeibo Id="4" SortId="4" AppKey="801307650" AppSecret="ae36f4ee3946e1cbb98d6965b0b2ff5c" Enable="true" RedirectUri="http://sharesdk.cn" />
+<Douban Id="10" SortId="10" Enable="true" ApiKey="031a96a3aa8b28af094fc3eaffa17a0d" Secret="2e675e730571b75d" RedirectUri="http://mob.com" />
+<QZone Id="5" SortId="5" AppId="1105369515" AppKey="BmgAjHO8ZiB6v4lc" ShareByAppClient="true" BypassApproval="false" Enable="true" />
 <Renren Enable="false" />
 <KaiXin Enable="false" />
 <Facebook Enable="false" />
@@ -14,19 +14,19 @@
 <Instagram Enable="false" />
 <LinkedIn Enable="false" />
 <Tumblr Enable="false" />
-<Email Enable="false" />
-<ShortMessage Enable="false" />
-<Wechat AppId="wxc8cec7ba28526e82s" AppSecret="82fccc5ccffd7e4aaf5907b9f36e911edd" />
-<WechatMoments Enable="false" />
-<QQ AppId="1105369515" AppKey="BmgAjHO8ZiB6v4lcs" ShareByAppClient="false" BypassApproval="false" Enable="true" />
+<Email Id="8" SortId="8" Enable="true" />
+<ShortMessage Id="9" SortId="9" Enable="true" />
+<Wechat Id="1" SortId="1" AppId="wxc8cec7ba28526e82s" AppSecret="82fccc5ccffd7e4aaf5907b9f36e911edd" BypassApproval="false" />
+<WechatMoments Id="6" SortId="6" AppId="wxc8cec7ba28526e82s" AppSecret="82fccc5ccffd7e4aaf5907b9f36e911edd" BypassApproval="true" Enable="true" />
+<QQ Id="2" SortId="2" AppId="1105369515" AppKey="BmgAjHO8ZiB6v4lcs" ShareByAppClient="false" BypassApproval="false" Enable="true" />
 <Instapaper Enable="false" />
 <Pocket Enable="false" />
-<YouDao Enable="false" />
+<YouDao Id="11" SortId="11" HostType="product" Enable="true" ConsumerKey="dcde25dca105bcc36884ed4534dab940" ConsumerSecret="d98217b4020e7f1874263795f44838fe" RedirectUri="http://www.sharesdk.cn/" />
 <Pinterest Enable="false" />
 <Flickr Enable="false" />
 <Dropbox Enable="false" />
 <VKontakte Enable="false" />
-<WechatFavorite Enable="false" />
+<WechatFavorite Id="7" SortId="7" AppId="wxc8cec7ba28526e82s" AppSecret="82fccc5ccffd7e4aaf5907b9f36e911edd" BypassApproval="false" Enable="true" />
 <Yixin Enable="false" />
 <YixinMoments Enable="false" />
 <Mingdao Enable="false" />

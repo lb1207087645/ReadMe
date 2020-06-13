@@ -5,16 +5,18 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 
+import com.mob.MobSDK;
+
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.wechat.friends.Wechat;
 
 
 /**
- * 参考光速达管家
- * Created by Zhengbinbin on 2016/8/5.
+ * Created by linbin on 2016/8/5.
  */
 public class ShareSdkUtils {
     private Context mContext;
@@ -36,7 +38,7 @@ public class ShareSdkUtils {
 //        ShareSDK.stopSDK(mContext);
     }
 
-//    /**
+    //    /**
 //     * 分享到微信好友 图片
 //     */
     public void shareWeChat_ImagePath(@NonNull String mBmpPath, @NonNull String title, PlatformActionListener listener) {
@@ -80,6 +82,25 @@ public class ShareSdkUtils {
         platform.setPlatformActionListener(listener); // 设置分享事件回调
         // 执行图文分享
         platform.share(sp);
+
+
+    }
+
+
+    public void oneShare(String url, String titleUrl, @NonNull String imagePath, String title, @NonNull String text) {
+        OnekeyShare oks = new OnekeyShare();
+// title标题，微信、QQ和QQ空间等平台使用
+        oks.setTitle(title);
+// titleUrl QQ和QQ空间跳转链接
+        oks.setTitleUrl(titleUrl);
+// text是分享文本，所有平台都需要这个字段
+        oks.setText(text);
+// setImageUrl是网络图片的url
+        oks.setImageUrl(imagePath);
+// url在微信、Facebook等平台中使用
+        oks.setUrl(url);
+// 启动分享GUI
+        oks.show(MobSDK.getContext());
     }
 
     //
@@ -130,7 +151,8 @@ public class ShareSdkUtils {
             mContext.startActivity(sendIntent);
         }
     }
-//
+
+    //
 //    /**
 //     * 分享微信 （本地图标）
 //     */
@@ -160,7 +182,8 @@ public class ShareSdkUtils {
         platform.setPlatformActionListener(listener); // 设置分享事件回调
         platform.share(sp);
     }
-//
+
+    //
 //    /**
 //     * 分享微信 （图标Url）
 //     */
@@ -175,7 +198,8 @@ public class ShareSdkUtils {
         platform.setPlatformActionListener(listener); // 设置分享事件回调
         platform.share(sp);
     }
-//
+
+    //
 //    /**
 //     * 分享微信（本地图标路径地址）
 //     * @param url
@@ -195,7 +219,8 @@ public class ShareSdkUtils {
         platform.setPlatformActionListener(listener); // 设置分享事件回调
         platform.share(sp);
     }
-//
+
+    //
     public void shareQQ_WebPage(String url, String title, String content, Bitmap bmp, PlatformActionListener listener) {
         Platform platform = ShareSDK.getPlatform(QQ.NAME);//?
         Platform.ShareParams sp = new Platform.ShareParams();
@@ -207,7 +232,8 @@ public class ShareSdkUtils {
         platform.setPlatformActionListener(listener); // 设置分享事件回调
         platform.share(sp);
     }
-//
+
+    //
     public void shareQQ_WebPage2(String url, String title, String content, String imageUrl, PlatformActionListener listener) {
         Platform platform = ShareSDK.getPlatform(QQ.NAME);//?
         Platform.ShareParams sp = new Platform.ShareParams();
@@ -341,5 +367,19 @@ public class ShareSdkUtils {
 //        oks.show(context);
 //    }
 
+    /**
+     * 带图标和连接
+     */
+//    public void shareSinaWeibo(String url, String title, String content, String imageUrl) {
+//        Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
+//        Platform.ShareParams sp = new Platform.ShareParams();
+//        sp.setShareType(Platform.SHARE_WEBPAGE);// 一定要设置分享属性
+//        sp.setTitle(title);
+//        sp.setUrl(url);//跳转链接
+//        sp.setText(content);
+//        sp.setImageUrl(imageUrl);//图片url
+//        platform.setPlatformActionListener(mPlatformActionListener); // 设置分享事件回调
+//        platform.share(sp);
+//    }
 
 }

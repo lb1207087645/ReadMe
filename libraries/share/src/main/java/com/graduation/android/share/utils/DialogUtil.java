@@ -39,6 +39,8 @@ public class DialogUtil {
         void onWeChatFriendsClick();
 
         void onMessageClick();
+
+        void weiboClick();
     }
     //分享弹窗
     public Dialog showShareDialog(Activity mContext, boolean showShareMessage){
@@ -51,6 +53,9 @@ public class DialogUtil {
         LinearLayout llyShareQQkj=(LinearLayout) view.findViewById(R.id.lly_share_qqkj);
         LinearLayout llyShareMessage=(LinearLayout) view.findViewById(R.id.lly_share_message);
         LinearLayout llyMessage=(LinearLayout) view.findViewById(R.id.lly_message);
+        LinearLayout llyWeibo=(LinearLayout) view.findViewById(R.id.lly_share_weibo);
+
+
         TextView tvCancel=(TextView) view.findViewById(R.id.tv_cancel);
         llyShareMessage.setVisibility(showShareMessage? View.VISIBLE: View.GONE);
         llyMessage.setVisibility(showShareMessage? View.VISIBLE: View.GONE);
@@ -90,6 +95,16 @@ public class DialogUtil {
                     mDialogClickListener.onMessageClick();
             }
         });
+
+
+        llyWeibo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mDialogClickListener!=null)
+                    mDialogClickListener.weiboClick();
+            }
+        });
+
         tvCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

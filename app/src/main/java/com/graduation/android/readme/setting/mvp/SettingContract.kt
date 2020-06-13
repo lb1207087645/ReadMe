@@ -17,11 +17,13 @@ class SettingContract {
         fun modifynickNameFailure(errMsg: String)
 
 
-
         fun updateUserSexSuccess()
 
         fun updateUserSexFailure(mssage: String)
 
+        fun feedbackSuccess()
+
+        fun mfeedbackFailure(errMsg: String)
     }
 
     /**
@@ -30,9 +32,9 @@ class SettingContract {
         fun modifyPwd(oldPwd: String, newPwd: String)
         fun updateInfo(nickName: String)//修改昵称
 
-        fun updateUserSex(sexMsg:Int)
+        fun updateUserSex(sexMsg: Int)
 
-
+        fun feedback(feedBack: String)//反馈
 
     }
 }

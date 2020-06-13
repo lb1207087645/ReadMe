@@ -15,6 +15,20 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+
+    signingConfigs {//签名配置
+        release {
+            keyAlias 'test'
+            keyPassword '123456'
+            storeFile file('../test.jks')
+            storePassword '123456'
+        }
+        debug {
+
+        }
+    }
+
     buildTypes {
 
 
@@ -25,7 +39,6 @@ android {
             //  buildConfigField "String", "BASE_URL", "\"http://api.iclient.ifeng.com/\""//凤凰网
 //            buildConfigField "String", "BASE_URL", "\"http://i.jandan.net/\""//煎蛋网
             buildConfigField "String", "BASE_URL", "\"http://fanyi.youdao.com/\""//post测试
-
 
 
             minifyEnabled false
@@ -43,9 +56,9 @@ android {
             buildConfigField "String", "BASE_URL", "\"http://fanyi.youdao.com/\""//post测试
 
 
-
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
 
 
@@ -56,8 +69,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-
 
 
 }
