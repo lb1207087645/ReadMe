@@ -272,6 +272,8 @@ public class RetrofitServiceManager {
         validateServiceInterface(service);
         // addInterceptor(new NetworkInterceptor());
         addInterceptor(RetrofitConfig.headerInterceptor);
+        addInterceptor(new GzipInterceptor());
+
 //        addInterceptor(RetrofitConfig.sQueryParameterInterceptor);
         return getGlobalRetrofit(client).create(service);
     }

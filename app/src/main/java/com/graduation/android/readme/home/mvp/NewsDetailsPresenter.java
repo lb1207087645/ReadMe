@@ -41,6 +41,8 @@ public class NewsDetailsPresenter extends BasePresenter<NewsDetailsContract.View
             @Override
             public NewsDetail apply(Map<String, NewsDetail> stringNewsDetailMap) throws Exception {
                 NewsDetail newsDetail = stringNewsDetailMap.get(postId);
+
+
                 changeNewsDetail(newsDetail);
                 return newsDetail;
             }

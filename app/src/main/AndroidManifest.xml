@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.graduation.android.readme">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -22,6 +23,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        tools:replace="android:name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -46,12 +48,18 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".home.NewsDetailActivity" />
-        <activity android:name=".home.NewsPhotoDetailActivity" />
+        <activity android:name=".home.NewsDetailActivity"
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".home.NewsPhotoDetailActivity"
+            android:screenOrientation="portrait"
+            />
 
         <activity android:name=".setting.ModifyPwdActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
+
             />
 
         <activity android:name=".setting.ModifyNickNameActivity"
@@ -89,7 +97,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Transparent"
             android:hardwareAccelerated="true"
-
             android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
         <provider

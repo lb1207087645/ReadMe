@@ -22,8 +22,6 @@ import okio.Buffer;
 
 /**
  * desc: 日志拦截器
- * Created by lyt
- * email:lytjackson@gmail.com
  */
 public class HttpLoggingInterceptor implements Interceptor {
 

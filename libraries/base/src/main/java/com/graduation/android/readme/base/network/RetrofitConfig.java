@@ -44,7 +44,7 @@ public class RetrofitConfig {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request build = chain.request().newBuilder()
-                    .addHeader("Accept-Encoding", "identity")
+                    .addHeader("Accept-Encoding", "*")
                     .build();
             return chain.proceed(build);
         }

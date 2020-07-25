@@ -7,12 +7,14 @@ import android.os.Bundle;
 
 import com.graduation.android.readme.BuildConfig;
 import com.graduation.android.readme.api.LenientGsonConverterFactory;
+import com.graduation.android.readme.api.NullOnEmptyConverterFactory;
 import com.graduation.android.readme.base.BaseApplication;
 
 import com.graduation.android.readme.basemodule.ModuleBaseDiffImpl;
 import com.graduation.android.readme.base.diff.ModuleBaseDiffHelper;
 import com.graduation.android.readme.base.network.RetrofitServiceManager;
 import com.graduation.android.readme.base.widget.state.CommonState;
+import com.mob.MobSDK;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -57,7 +59,8 @@ public class MainApplication extends BaseApplication implements Application.Acti
 
             boolean isShowLog = BuildConfig.LOG_DEBUG;
             RetrofitServiceManager retrofitServiceManager = RetrofitServiceManager.getInstance()
-                    .addConverterFactory(LenientGsonConverterFactory.create());
+                    .addConverterFactory(new NullOnEmptyConverterFactory())
+                    .addConverterFactory(GsonConverterFactory.create());
 //                    .addConverterFactory(retrofit2.converter.gson.GsonConverterFactory.create());
 //            if (BuildConfig.LOG_DEBUG) {
 //                retrofitServiceManager.addInterceptor(new HostConfigInterceptor());//添加拦截器
@@ -79,7 +82,7 @@ public class MainApplication extends BaseApplication implements Application.Acti
 //                    .setCacheTime(30 * 24 * 60 * 60)// 缓存时间，默认-1表示永久缓存
 //                    .setCacheVersion(com.sinyee.babybus.core.util.AppUtil.getVersionCode(this))// 缓存版本，可以自行设置
                     .setBaseUrl(BuildConfig.BASE_URL)//base url 设置
-                    .setLog(isShowLog);//设置log,打印请求日志和返回日志
+                    .setLog(false);//设置log,打印请求日志和返回日志
             // 捕获rx不处理的异常
             RxJavaPlugins.setErrorHandler(new Consumer<Throwable>() {
                 @Override
@@ -94,6 +97,8 @@ public class MainApplication extends BaseApplication implements Application.Acti
         ModuleBaseDiffHelper.getInstance().registerModuleBaseDiff(new ModuleBaseDiffImpl()); // 初始化IModuleBaseDiff，加载loadview
 
         CommonState.Config.initGlobalConfig();//全局状态配置loadsir加载框架
+
+        MobSDK.init(this);
     }
 
     private void initAudio() {

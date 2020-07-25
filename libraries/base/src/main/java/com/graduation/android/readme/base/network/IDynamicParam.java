@@ -5,8 +5,7 @@ import java.io.IOException;
 import okhttp3.Request;
 
 /**
- * Created by lytjackson on 2018/1/9.
- * email:lytjackson@gmail.com
+ *
  */
 public interface IDynamicParam {
 
